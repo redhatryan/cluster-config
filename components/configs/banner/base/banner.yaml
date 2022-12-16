@@ -3,7 +3,7 @@ kind: ConsoleNotification
 metadata:
   name: home-banner
 spec:
-  text: "Cluster: POC - Argo is Exciting!"
+  text: "Cluster: POC - Argo is Super Fun!"
   location: BannerTop
   color: '#fff'
   backgroundColor: '#0088ce'
