@@ -3,7 +3,7 @@ kind: ConsoleNotification
 metadata:
   name: home-banner
 spec:
-  text: "Argo is Awesome!"
+  text: "Argo is Fun!"
   location: BannerTop
   color: '#fff'
   backgroundColor: '#0088ce'
