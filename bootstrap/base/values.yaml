@@ -8,7 +8,7 @@ default:
       namespace: openshift-gitops
       server: https://kubernetes.default.svc
     source:
-      repoURL: https://github.com/gnunn-gitops/cluster-config.git
+      repoURL: https://github.com/redhatryan/cluster-config.git
       targetRevision: HEAD
 
 projects:
@@ -20,11 +20,9 @@ projects:
     description: Project for overall cluster configuration
     namespace: openshift-gitops
     sourceRepos:
-    - https://github.com/gnunn-gitops/cluster-config
+    - https://github.com/redhatryan/cluster-config
     - https://github.com/redhat-cop/gitops-catalog
-    - https://github.com/gnunn1/gitops-catalog
-    - https://github.com/gnunn-gitops/acm-hub-bootstrap
-    - https://github.com/gnunn1/dev-console-plugin
+    - https://github.com/redhatryan/acm-hub-bootstrap
     destinations: |
       - namespace: '*'
         server: https://kubernetes.default.svc
