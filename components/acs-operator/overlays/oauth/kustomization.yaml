@@ -1,0 +1,21 @@
+commonAnnotations:
+  argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
+resources:
+  - github.com/redhat-cop/gitops-catalog/advanced-cluster-security-operator/aggregate/default
+  - init-acs.yaml
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/channel
+        value: 'rhacs-4.1'
+    target:
+      kind: Subscription
+      name: rhacs-operator
+  - patch: |-
+      - op: replace
+        path: /spec/perNode/collector/collection
+        value: EBPF
+    target:
+      kind: SecuredCluster
