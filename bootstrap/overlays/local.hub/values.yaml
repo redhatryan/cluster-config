@@ -8,7 +8,7 @@ default:
       namespace: openshift-gitops
       server: https://kubernetes.default.svc
     source:
-      repoURL: https://github.com/gnunn-gitops/cluster-config.git
+      repoURL: https://github.com/redhatryan/cluster-config.git
       targetRevision: HEAD
 
 applications:
@@ -19,14 +19,6 @@ applications:
     source:
       path: clusters/overlays/local.hub/components/node-config
 
-  odf-instance:
-    annotations:
-      argocd.argoproj.io/sync-wave: '2'
-    destination:
-      namespace: openshift-storage
-    source:
-      path: components/odf-operator/instance/base
-
   acs:
     annotations:
       argocd.argoproj.io/sync-wave: '21'
@@ -35,13 +27,21 @@ applications:
     source:
       path: clusters/overlays/local.hub/components/acs-operator
 
+  acs-secured-cluster:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destination:
+      namespace: rhacs-operator
+    source:
+      path: components/acs-operator/overlays/secured-cluster
+
   acm-hub:
     annotations:
       argocd.argoproj.io/sync-wave: '21'
     destinations:
       namespace: open-cluster-management
     source:
-      repoURL: https://github.com/gnunn-gitops/acm-hub-bootstrap.git
+      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
       path: components/apps/acm/overlays/hub
 
   acm-observability:
@@ -50,7 +50,7 @@ applications:
     destinations:
       namespace: open-cluster-management-observability
     source:
-      repoURL: https://github.com/gnunn-gitops/acm-hub-bootstrap.git
+      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
       path: components/apps/acm/overlays/observability
 
   acm-policies:
@@ -59,14 +59,8 @@ applications:
     destinations:
       namespace: acm-policies
     source:
-      repoURL: https://github.com/gnunn-gitops/acm-hub-bootstrap.git
+      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
       path: bootstrap/policies/overlays/default
-
-  # Disable while we work this out
-  nmstate:
-    enabled: true
-    source:
-      path: clusters/overlays/local.hub/components/nmstate
 
   banner:
     annotations:
@@ -88,14 +82,6 @@ applications:
     source:
       path: clusters/overlays/local.hub/components/certificates
 
-  dev-tools:
-    annotations:
-      argocd.argoproj.io/sync-wave: '31'
-    destination:
-      namespace: dev-tools
-    source:
-      path: components/dev-tools/overlays/default
-
   openshift-monitoring:
     annotations:
       argocd.argoproj.io/compare-options: IgnoreExtraneous
@@ -104,22 +90,6 @@ applications:
       namespace: openshift-monitoring
     source:
       path: clusters/overlays/local.hub/components/openshift-monitoring
-
-  quay-registry:
-    # leave disabled unless needed for demo
-    enabled: false
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    source:
-      path: clusters/overlays/local.hub/components/quay-registry-operator
-
-  cost-management:
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: costmanagement-metrics-operator
-    source:
-      path: clusters/overlays/local.hub/components/cost-management-operator
 
   lokistack:
     enabled: false
