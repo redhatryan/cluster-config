@@ -1,15 +1,15 @@
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
-  name: letsencrypt-aws
+  name: letsencrypt
   namespace: cert-manager
 spec:
   secretStoreRef:
     kind: ClusterSecretStore
     name: doppler-cluster
   target:
-    name: letsencrypt-aws
+    name: letsencrypt
   data:
     - secretKey: secret-access-key
       remoteRef:
-        key: AWS_LETSENCRYPT
+        key: LETSENCRYPT
