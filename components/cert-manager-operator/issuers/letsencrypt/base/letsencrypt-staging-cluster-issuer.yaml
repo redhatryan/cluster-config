@@ -7,6 +7,7 @@ spec:
     # Use the Let's Encrypt staging environment for testing
     server: https://acme-staging-v02.api.letsencrypt.org/directory
     email: ryan@etbitconsulting.com
+    # This key doesn't exist, cert-manager creates it
     privateKeySecretRef:
       name: retten-redhat-issuer-account-key
     solvers:
