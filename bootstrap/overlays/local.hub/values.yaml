@@ -13,12 +13,6 @@ default:
 
 applications:
 
-  node-config:
-    annotations:
-      argocd.argoproj.io/sync-wave: '0'
-    source:
-      path: clusters/overlays/local.hub/components/node-config
-
   acs:
     annotations:
       argocd.argoproj.io/sync-wave: '21'
@@ -43,15 +37,6 @@ applications:
     source:
       repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
       path: components/apps/acm/overlays/hub
-
-  acm-observability:
-    annotations:
-      argocd.argoproj.io/sync-wave: '31'
-    destinations:
-      namespace: open-cluster-management-observability
-    source:
-      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
-      path: components/apps/acm/overlays/observability
 
   acm-policies:
     annotations:
@@ -81,35 +66,3 @@ applications:
       namespace: cert-manager-operator
     source:
       path: clusters/overlays/local.hub/components/certificates
-
-  openshift-monitoring:
-    annotations:
-      argocd.argoproj.io/compare-options: IgnoreExtraneous
-      argocd.argoproj.io/sync-wave: '11'
-    destination:
-      namespace: openshift-monitoring
-    source:
-      path: clusters/overlays/local.hub/components/openshift-monitoring
-
-  lokistack:
-    enabled: false
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    source:
-      path: clusters/overlays/local.hub/components/lokistack
-    syncPolicyRetry:
-      limit: 5
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
-
-  kyverno-acm:
-    enabled: false
-    annotations:
-      argocd.argoproj.io/compare-options: IgnoreExtraneous
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: acm-policies
-    source:
-      path: components/kyverno-acm/base

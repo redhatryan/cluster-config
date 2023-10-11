@@ -5,7 +5,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/servingCerts/namedCertificates/0/names/0
-        value: api.hub.ocplab.com
+        value: api.lab.etbit.io
     target:
       group: config.openshift.io
       kind: APIServer
@@ -14,7 +14,7 @@ patches:
       - op: replace
         path: /spec/dnsNames
         value:
-          - api.hub.ocplab.com
+          - api.lab.etbit.io
     target:
       kind: Certificate
       name: openshift-api
@@ -22,10 +22,10 @@ patches:
       - op: replace
         path: /spec/dnsNames
         value:
-          - '*.apps.hub.ocplab.com'
+          - '*.apps.lab.etbit.io'
       - op: replace
         path: /spec/commonName
-        value: '*.apps.hub.ocplab.com'
+        value: '*.apps.lab.etbit.io'
     target:
       kind: Certificate
       name: openshift-wildcard

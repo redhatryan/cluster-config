@@ -3,7 +3,7 @@ kind: ConsoleLink
 metadata:
   name: acs
 spec:
-  href: 'https://central-stackrox.apps.hub.ocplab.com'
+  href: 'https://central-stackrox.apps.lab.etbit.io'
   location: ApplicationMenu
   text: Advanced Cluster Security
   applicationMenu:
