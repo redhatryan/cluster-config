@@ -7,7 +7,7 @@ helmCharts:
   repo: https://redhatryan.github.io/helm-charts/
   valuesFile: values.yaml
   namespace: openshift-gitops
-  releaseName: argocd-app-of-app-0.1.0
+#  releaseName: argocd-app-of-app-0.1.0
 
 resources:
 - ../local
