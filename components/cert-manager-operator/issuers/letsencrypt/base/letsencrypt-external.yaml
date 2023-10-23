@@ -10,6 +10,6 @@ spec:
   target:
     name: cloudflare-api-key
   data:
-    - secretKey: secret-access-key
+    - apiKey: secret-access-key
       remoteRef:
         key: LETSENCRYPT

@@ -16,6 +16,6 @@ spec:
       dns01:
         cloudflare:
           email: ryan@etbitconsulting.com
-          secretAccessKeySecretRef:
+          apiKeySecretRef:
             name: cloudflare-api-key
             key: secret-access-key
