@@ -8,8 +8,8 @@ spec:
     kind: ClusterSecretStore
     name: doppler-cluster
   target:
-    name: letsencrypt
+    name: cloudflare-api-key
   data:
-    - api-key: cloudflare-api-key
+    - secretKey: secret-access-key
       remoteRef:
         key: LETSENCRYPT
