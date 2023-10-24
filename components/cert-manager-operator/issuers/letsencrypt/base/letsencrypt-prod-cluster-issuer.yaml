@@ -10,10 +10,7 @@ spec:
     privateKeySecretRef:
       name: retten-redhat-issuer-account-key
     solvers:
-    - selector:
-        dnsZones:
-          - "etbit.io"
-      dns01:
+    - dns01:
         cloudflare:
           email: ryan@etbitconsulting.com
           apiKeySecretRef:
