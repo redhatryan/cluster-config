@@ -21,6 +21,14 @@ applications:
     source:
       path: components/cert-manager-operator/aggregate/overlays/letsencrypt
 
+  authentication:
+    annotations:
+      argocd.argoproj.io/sync-wave: '4'
+    destination:
+      namespace: openshift-config
+    source:
+      path: components/oauth/overlays/homelab
+
   rbac:
     annotations:
       argocd.argoproj.io/compare-options: IgnoreExtraneous
