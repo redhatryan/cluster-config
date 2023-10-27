@@ -10,10 +10,10 @@ spec:
   ingressClassName: openshift-default                            
   tls:
   - hosts:
-    - "*.apps.etbit.io"                                                
+    - "*.apps.lab.etbit.io"                                                
     secretName: acme-tls-prod                                       
   rules:
-  - host: "*.apps.etbit.io"                                       
+  - host: "*.apps.lab.etbit.io"                                       
     http:
       paths:
       - path: /
