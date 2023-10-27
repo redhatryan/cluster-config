@@ -11,7 +11,7 @@ spec:
   tls:
   - hosts:
     - "*.apps.lab.etbit.io"                                              
-    secretName: acme-tls-prod                                       
+    secretName: acme-tls-staging                                       
   rules:
   - host: "*.apps.lab.etbit.io"                                       
     http:
