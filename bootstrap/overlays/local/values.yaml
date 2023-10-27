@@ -28,6 +28,14 @@ applications:
       namespace: openshift-config
     source:
       path: components/oauth/overlays/homelab
+  
+  registry:
+    annotations:
+      argocd.argoproj.io/sync-wave: '5'
+    destination:
+      namespace: openshift-image-registry
+    source:
+      path: components/registry-sno/base
 
   rbac:
     annotations:
