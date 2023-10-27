@@ -51,6 +51,14 @@ applications:
     source:
       path: components/registry-sno/base
 
+  alertmanager:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    destination:
+      namespace: openshift-monitoring
+    source:
+      path: components/alertmanager/base
+
   rbac:
     annotations:
       argocd.argoproj.io/compare-options: IgnoreExtraneous
