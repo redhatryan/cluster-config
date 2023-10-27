@@ -51,13 +51,13 @@ applications:
     source:
       path: components/registry-sno/base
 
-  alertmanager:
-    annotations:
-      argocd.argoproj.io/sync-wave: '11'
-    destination:
-      namespace: openshift-monitoring
-    source:
-      path: components/alertmanager/base
+  #alertmanager:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  destination:
+  #    namespace: openshift-monitoring
+  #  source:
+  #    path: components/alertmanager/base
 
   rbac:
     annotations:
@@ -66,12 +66,12 @@ applications:
     source:
       path: components/rbac/base
 
-  sso:
-    annotations:
-      argocd.argoproj.io/compare-options: IgnoreExtraneous
-      argocd.argoproj.io/sync-wave: '11'
-    source:
-      path: components/sso/overlays/default
+  #sso:
+  #  annotations:
+  #    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  source:
+  #    path: components/sso/overlays/default
 
    #kyverno:
    # enabled: false
