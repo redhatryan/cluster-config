@@ -44,6 +44,13 @@ applications:
     source:
       path: components/rbac/base
 
+  sso:
+    annotations:
+      argocd.argoproj.io/compare-options: IgnoreExtraneous
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/sso/overlays/default
+
   web-terminal:
     annotations:
       argocd.argoproj.io/sync-wave: '21'
