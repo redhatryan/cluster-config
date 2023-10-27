@@ -16,8 +16,8 @@ spec:
       dns01:
         route53:
           region: ca-central-1
-          accessKeyID: AKIAVW7HGAZVWLIKXRCA
-          hostedZoneID: Z1LKUX3GLO9GW9
+          accessKeyID: AKIARZWJCUJMKAZJTNZ7
+          hostedZoneID: Z047353336S8Z4K3JOM23
           secretAccessKeySecretRef:
             name: letsencrypt-aws
             key: secret-access-key
