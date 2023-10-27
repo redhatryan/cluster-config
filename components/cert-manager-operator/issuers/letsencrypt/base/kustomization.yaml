@@ -9,3 +9,6 @@ resources:
 - letsencrypt-external.yaml
 - letsencrypt-staging-cluster-issuer.yaml
 - letsencrypt-prod-cluster-issuer.yaml
+- acme-ingress-ns.yaml
+- acme-ingress-prod.yaml
+- acme-ingress-staging.yaml
