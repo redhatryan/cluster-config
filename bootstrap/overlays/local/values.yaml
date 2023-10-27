@@ -41,7 +41,7 @@ applications:
     destination:
       namespace: openshift-config
     source:
-      path: components/oauth/overlays/htpass
+      path: components/oauth/overlays/homelab
   
   registry:
     annotations:

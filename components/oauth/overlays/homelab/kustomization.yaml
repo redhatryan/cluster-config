@@ -2,4 +2,4 @@ resources:
 - ../../base
 
 components:
-- ../sso
+- ../htpass
