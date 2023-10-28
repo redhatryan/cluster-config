@@ -52,19 +52,19 @@ applications:
   #    repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
   #    path: components/apps/acm/overlays/observability
 
-  acm-clusters:
-    annotations:
-      argocd.argoproj.io/sync-wave: '31'
-    labels:
-      repo: ignore
-    destinations:
-      namespace: openshift-gitops
-    source:
-      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
-      path: components/clusters/base
+  #acm-clusters:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '31'
+  #  labels:
+  #    repo: ignore
+  #  destinations:
+  #    namespace: openshift-gitops
+  #  source:
+  #    repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+  #    path: components/clusters/base
       # Always use latest so we can can set gitops-revision for commit pinnning,
       # otherwise it's chicken and egg problem.
-      targetRevision: HEAD
+  #    targetRevision: HEAD
 
   acm-policies:
     annotations:
