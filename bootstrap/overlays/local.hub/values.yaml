@@ -59,7 +59,7 @@ applications:
       repo: ignore
     destinations:
       namespace: openshift-gitops
-   source:
+    source:
       repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
       path: components/clusters/base
       # Always use latest so we can can set gitops-revision for commit pinnning,
