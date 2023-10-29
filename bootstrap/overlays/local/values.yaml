@@ -66,12 +66,12 @@ applications:
     source:
       path: components/rbac/base
 
-  #sso:
-  #  annotations:
-  #    argocd.argoproj.io/compare-options: IgnoreExtraneous
-  #    argocd.argoproj.io/sync-wave: '11'
-  #  source:
-  #    path: components/sso/overlays/default
+  sso:
+    annotations:
+      argocd.argoproj.io/compare-options: IgnoreExtraneous
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/sso/overlays/default
 
    #kyverno:
    # enabled: false
