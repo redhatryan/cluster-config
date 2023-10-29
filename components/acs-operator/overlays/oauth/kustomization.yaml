@@ -19,3 +19,9 @@ patches:
         value: EBPF
     target:
       kind: SecuredCluster
+  - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/image
+        value: registry.redhat.io/openshift4/ose-cli:latest
+    target:
+      kind: Job
