@@ -21,7 +21,7 @@ patches:
       kind: SecuredCluster
   - patch: |-
       - op: replace
-        path: /spec/template/spec/containers/image
+        path: /spec/template/spec/containers/0/image
         value: registry.redhat.io/openshift4/ose-cli:latest
     target:
       kind: Job
