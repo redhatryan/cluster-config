@@ -41,16 +41,16 @@ applications:
       repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
       path: components/apps/acm/overlays/hub
 
-  #acm-observability:
-  #  annotations:
-  #    argocd.argoproj.io/sync-wave: '31'
-  #  labels:
-  #    repo: acm-hub-bootstrap
-  #  destinations:
-  #    namespace: open-cluster-management-observability
-  #  source:
-  #    repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
-  #    path: components/apps/acm/overlays/observability
+  acm-observability:
+    annotations:
+      argocd.argoproj.io/sync-wave: '31'
+    labels:
+      repo: acm-hub-bootstrap
+    destinations:
+      namespace: open-cluster-management-observability
+    source:
+      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+      path: components/apps/acm/overlays/observability
 
   acm-clusters:
     annotations:
