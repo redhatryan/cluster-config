@@ -1,6 +1,6 @@
 # GitOps Cluster Configuration
 
-This repo contains the cluster configuration I use for my personal OpenShift clusters. It is modeled after the hard work of Gerald Nunn (https://github.com/gnunn-gitops). Like my other GitOps repos, it leverages ArgoCD heavily. This repo originally followed the folder structure defined in the [Standards](https://github.com/gnunn-gitops/standards) repository.
+This repo contains the cluster configuration I use for my personal OpenShift clusters. It is modeled after the hard work of Gerald Nunn (https://github.com/gnunn-gitops). It leverages ArgoCD heavily. This repo originally followed the folder structure defined in Gerald's [Standards](https://github.com/gnunn-gitops/standards) repository.
 
 # Structure
 
@@ -24,9 +24,9 @@ A helm chart managed by kustomize is used to generate the list of Argo CD Applic
 
 In the bootstrap _base_ and cluster _overlays_ (`bootstrap/overlays/<cluster-name>`) there is a `kustomization.yaml` file along with a `values.yaml` file where we use kustomize to generate the Application manifests from a `helm template`.
 
-This helm chart is run independently at each layer and is aggregated by higher levels. So for example, `local.home` cluster, which is my Intel NUC SNO in my homelab, has an application tree that aggregatesm Applications as follows:
+This helm chart is run independently at each layer and is aggregated by higher levels. So for example, `local.acm` cluster, which is my Intel NUC SNO hub in my homelab, has an application tree that aggregates Applications as follows:
 
-`base` > `local` > `local.home`
+`base` > `local` > `local.acm`
 
 At each layer the helm chart is run for that layer and generates the Application manifests for that specific layer. The nice thing with this approach is group or cluster specific changes is easy, kustomize can be used to override a lower level layer's Application(s) and point it to a cluster specific version simply by patching it's path and/or repo.
 
