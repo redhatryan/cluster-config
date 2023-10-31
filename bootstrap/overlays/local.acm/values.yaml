@@ -5,7 +5,7 @@ default:
     autoSyncPrune: false
     project: cluster-config
     labels:
-     app-source: local.hub
+     app-source: local.acm
      repo: cluster-config
     destination:
       namespace: openshift-gitops
@@ -79,13 +79,13 @@ applications:
     annotations:
       argocd.argoproj.io/sync-wave: '11'
     source:
-      path: clusters/overlays/local.hub/components/banner
+      path: clusters/overlays/local.acm/components/banner
 
   console-links:
     annotations:
       argocd.argoproj.io/sync-wave: '11'
     source:
-      path: clusters/overlays/local.hub/components/consolelinks
+      path: clusters/overlays/local.acm/components/consolelinks
 
   certificates:
     annotations:
@@ -93,7 +93,7 @@ applications:
     destination:
       namespace: cert-manager-operator
     source:
-      path: clusters/overlays/local.hub/components/certificates
+      path: clusters/overlays/local.acm/components/certificates
   
   openshift-monitoring:
     annotations:
@@ -102,7 +102,7 @@ applications:
     destination:
       namespace: openshift-monitoring
     source:
-      path: clusters/overlays/local.hub/components/openshift-monitoring
+      path: clusters/overlays/local.acm/components/openshift-monitoring
 
   #lokistack:
   #  enabled: false
