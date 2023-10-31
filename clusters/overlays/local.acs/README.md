@@ -1,3 +1,3 @@
 #### Home (local) Cluster
 
-This is my home cluster which runs on a server under my desk and uses the highly original cluster name of 'home'. It runs in libvirt on a Ryzen 3900x server with 128 GB of memory. It is typically configured as three combined master/worker nodes with 7 vCPU and 35 GB per node.
+This is my Single Node Openshift (SNO) dedicated Advanced Cluster Security (ACS) cluster. It is an Intel 2022 NUC 12 Pro, 12th Gen 12-Core i5-1240P up to 4.4GHz, 32GB DDR4 RAM, and 500GB PCIe SSD. There is an additional 1TB of storage.
