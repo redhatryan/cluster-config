@@ -44,7 +44,7 @@ spec:
               # Install community general in order to get json_query filter
               ansible-galaxy collection install community.general
 
-              git clone https://github.com/redhadryan/acs-automation.git
+              git clone https://github.com/redhatryan/acs-automation
 
               cd acs-automation
 
