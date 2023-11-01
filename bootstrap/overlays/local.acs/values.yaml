@@ -22,7 +22,7 @@ applications:
     destination:
       namespace: stackrox
     source:
-      path: clusters/overlays/local.hub/components/acs-operator
+      path: clusters/overlays/local.acs/components/acs-operator
 
   acs-secured-cluster:
     annotations:
