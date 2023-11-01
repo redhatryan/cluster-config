@@ -1,0 +1,26 @@
+commonAnnotations:
+  argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
+resources:
+  - github.com/redhat-cop/gitops-catalog/advanced-cluster-security-operator/aggregate/default
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/channel
+        value: 'rhacs-4.2'
+    target:
+      kind: Subscription
+      name: rhacs-operator
+  - patch: |-
+      - op: replace
+        path: /spec/perNode/collector/collection
+        value: EBPF
+    target:
+      kind: SecuredCluster
+  - patch: |-
+      - op: replace
+        path: /spec/template/spec/containers/0/image
+        value: registry.redhat.io/openshift4/ose-cli:latest
+    target:
+      kind: Job
