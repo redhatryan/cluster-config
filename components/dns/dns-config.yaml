@@ -1,0 +1,13 @@
+apiVersion: operator.openshift.io/v1
+kind: DNS
+metadata:
+  name: default
+spec:
+  servers:
+    - forwardPlugin:
+        policy: Random
+        upstreams:
+          - 172.16.1.9
+      name: synology-dns
+      zones:
+        - etbit.io
