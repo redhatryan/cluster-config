@@ -10,7 +10,7 @@ spec:
   template:
     spec:
       containers:
-        - image: registry.redhat.io/ansible-automation-platform-21/ee-supported-rhel8:1.0
+        - image: registry.redhat.io/ansible-automation-platform/ee-containerized-installer-rhel8:1.2.3-14
           envFrom:
           - secretRef:
               name: central-htpasswd
