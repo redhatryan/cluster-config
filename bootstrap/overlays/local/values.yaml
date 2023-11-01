@@ -18,7 +18,14 @@ applications:
       argocd.argoproj.io/sync-wave: '1'
     source:
       path: components/odf-operator/operator/overlays/no-registry
-      
+
+  # Add DNS via secret at some point or find another solution
+  #dns:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '1'  
+  #  source:
+  #    path: components/dns/
+
   cert-manager-operator:
     annotations:
       argocd.argoproj.io/sync-wave: "2"
