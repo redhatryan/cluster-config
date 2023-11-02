@@ -3,10 +3,10 @@ default:
     enabled: true
     enableAutoSync: true
     autoSyncPrune: false
-    project: cluster-config
+    project: acs-bootstrap
     labels:
      app-source: local.acs
-     repo: cluster-config
+     repo: acs-bootstrap
     destination:
       namespace: openshift-gitops
       server: https://kubernetes.default.svc
