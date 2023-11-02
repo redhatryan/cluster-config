@@ -1,5 +1,5 @@
 resources:
-- ../../../../../components/cert-manager-operator/issuers/letsencrypt/base
+- ../../../../../components/cert-manager-operator/aggregate/overlays/letsencrypt
 
 patches:
   - patch: |-

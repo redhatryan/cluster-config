@@ -129,7 +129,7 @@ applications:
     destination:
       namespace: cert-manager-operator
     source:
-      path: components/cert-manager-operator/aggregate/overlays/letsencrypt
+      path: clusters/overlays/acs.hub/components/cert-manager
   
   acs-lvm-operator:
     annotations:
