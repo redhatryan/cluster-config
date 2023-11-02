@@ -24,3 +24,10 @@ patches:
         value: registry.redhat.io/openshift4/ose-cli:latest
     target:
       kind: Job
+  - patch: |-
+      - op: replace
+        path: /spec/clusterName
+        value: ${CLUSTER_NAME}
+    target:
+      kind: SecuredCluster
+
