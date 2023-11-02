@@ -30,4 +30,10 @@ patches:
         value: ${CLUSTER_NAME}
     target:
       kind: SecuredCluster
+  - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: ${CLUSTER_NAME}
+    target:
+      kind: SecuredCluster
 
