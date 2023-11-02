@@ -4,9 +4,12 @@ default:
     enableAutoSync: true
     autoSyncPrune: false
     project: acs-cluster-config
+    labels:
+     app-source: acs.hub
+     repo: cluster-config
     destination:
       namespace: openshift-gitops
-      server: https://api.acs.etbit.io:6443
+      server: https://kubernetes.default.svc
     source:
       repoURL: https://github.com/redhatryan/cluster-config.git
       targetRevision: HEAD
