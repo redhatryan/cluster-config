@@ -9,7 +9,7 @@ default:
      repo: cluster-config
     destination:
       namespace: openshift-gitops
-      server: https://kubernetes.default.svc
+      server: https://api.acs.etbit.io:6443
     source:
       repoURL: https://github.com/redhatryan/cluster-config.git
       targetRevision: HEAD
