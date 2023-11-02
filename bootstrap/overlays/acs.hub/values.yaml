@@ -58,7 +58,7 @@ applications:
     destination:
       namespace: stackrox
     source:
-      path: clusters/overlays/lacs.hub/components/acs-operator
+      path: clusters/overlays/acs.hub/components/acs-operator
 
   #acs-secured-cluster:
   #  annotations:
