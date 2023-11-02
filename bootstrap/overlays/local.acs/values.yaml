@@ -4,9 +4,6 @@ default:
     enableAutoSync: true
     autoSyncPrune: false
     project: acs-bootstrap
-    labels:
-     app-source: local.acs
-     repo: acs-bootstrap
     destination:
       namespace: openshift-gitops
       server: https://kubernetes.default.svc
@@ -14,7 +11,160 @@ default:
       repoURL: https://github.com/redhatryan/cluster-config.git
       targetRevision: HEAD
 
+projects:
+
+  acs-bootstrap:
+    annotations:
+      notifications.argoproj.io/subscribe.on-sync-failed.slack: cluster-gitops
+      notifications.argoproj.io/subscribe.on-health-degraded.slack: cluster-gitops
+    description: Project for overall cluster configuration
+    namespace: openshift-gitops
+    sourceRepos:
+    - https://github.com/redhatryan/cluster-config
+    - https://github.com/redhat-cop/gitops-catalog
+    - https://github.com/redhatryan/acm-hub-bootstrap
+    - https://github.com/redhatryan/acs-hub-bootstrap
+    destinations: |
+      - namespace: '*'
+        server: https://kubernetes.default.svc
+    extraFields: |
+      clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
+
 applications:
+
+  external-secrets:
+    annotations:
+      argocd.argoproj.io/sync-wave: '1'
+    destination:
+      namespace: openshift-operators
+    source:
+      path: components/eso/overlays/aggregate
+
+  helm-repos:
+    annotations:
+      argocd.argoproj.io/compare-options: IgnoreExtraneous
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/helm-repos/base
+
+  odf-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: '1'
+    source:
+      path: components/odf-operator/operator/overlays/no-registry
+
+  # Add DNS via secret at some point or find another solution
+  #dns:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '1'  
+  #  source:
+  #    path: components/dns/
+
+  cert-manager-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "2"
+    destination:
+      namespace: cert-manager-operator
+    source:
+      path: components/cert-manager-operator/aggregate/overlays/letsencrypt
+  
+  lvm-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: '2'
+    destination:
+      namespace: openshift-storage
+    source:
+      path: clusters/overlays/local.acm/components/lvm-operator
+
+  authentication:
+    annotations:
+      argocd.argoproj.io/sync-wave: '4'
+    destination:
+      namespace: openshift-config
+    source:
+      path: components/oauth/overlays/homelab
+  
+  registry:
+    annotations:
+      argocd.argoproj.io/sync-wave: '5'
+    destination:
+      namespace: openshift-image-registry
+    source:
+      path: components/registry-sno/base
+
+  #alertmanager:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  destination:
+  #    namespace: openshift-monitoring
+  #  source:
+  #    path: components/alertmanager/base
+
+  rbac:
+    annotations:
+      argocd.argoproj.io/compare-options: IgnoreExtraneous
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/rbac/base
+
+  #sso:
+  #  annotations:
+  #    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  source:
+  #    path: components/sso/overlays/default
+
+   #kyverno:
+   # enabled: false
+   # annotations:
+   #   argocd.argoproj.io/compare-options: IgnoreExtraneous
+   #   argocd.argoproj.io/sync-wave: '21'
+   # destination:
+   #   namespace: kyverno
+   # source:
+   #   path: components/kyverno/overlays/policies
+   # syncPolicyRetry:
+   #   limit: 5
+   #   backoff:
+   #     duration: 5s
+   #     factor: 2
+   #     maxDuration: 3m
+   # extraFields: |
+   #   ignoreDifferences:
+   #     - group: kyverno.io
+   #       kind: ClusterPolicy
+   #       jsonPointers:
+   #       - /spec/rules
+   #     - group: kyverno.io
+   #       kind: Policy
+   #      jsonPointers:
+   #       - /spec/rules
+
+  web-terminal:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destination:
+      namespace: openshift-operators
+    source:
+      path: components/web-terminal-operator/base
+
+  defrag-etcd:
+    annotations:
+      argocd.argoproj.io/sync-wave: '99'
+    destination:
+      namespace: openshift-etcd
+    source:
+      path: components/defrag-etcd/base
+
+  cleanup-completed-pods:
+    annotations:
+      argocd.argoproj.io/sync-wave: '99'
+    destination:
+      namespace: clean-completed-pods
+    source:
+      path: components/clean-completed-pods/base
 
   acs:
     annotations:
