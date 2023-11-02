@@ -58,7 +58,7 @@ applications:
     destination:
       namespace: stackrox
     source:
-      path: clusters/overlays/local.acs/components/acs-operator
+      path: clusters/overlays/lacs.hub/components/acs-operator
 
   #acs-secured-cluster:
   #  annotations:
@@ -72,13 +72,13 @@ applications:
     annotations:
       argocd.argoproj.io/sync-wave: '11'
     source:
-      path: clusters/overlays/local.acs/components/banner
+      path: clusters/overlays/acs.hub/components/banner
 
   acs-console-links:
     annotations:
       argocd.argoproj.io/sync-wave: '11'
     source:
-      path: clusters/overlays/local.acs/components/consolelinks
+      path: clusters/overlays/acs.hub/components/consolelinks
 
   acs-certificates:
     annotations:
@@ -86,7 +86,7 @@ applications:
     destination:
       namespace: cert-manager-operator
     source:
-      path: clusters/overlays/local.acs/components/certificates
+      path: clusters/overlays/acs.hub/components/certificates
   
   acs-openshift-monitoring:
     annotations:
@@ -95,7 +95,7 @@ applications:
     destination:
       namespace: openshift-monitoring
     source:
-      path: clusters/overlays/local.acs/components/openshift-monitoring
+      path: clusters/overlays/acs.hub/components/openshift-monitoring
 
   #lokistack:
   #  enabled: false
