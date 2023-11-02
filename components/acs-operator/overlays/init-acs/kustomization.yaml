@@ -36,4 +36,10 @@ patches:
         value: ${CLUSTER_NAME}
     target:
       kind: SecuredCluster
+  - patch: |-
+      - op: replace
+        path: /spec/centralEndpoint
+        value: central-stackrox.apps.acs.etbit.io:443
+    target:
+      kind: SecuredCluster
 
