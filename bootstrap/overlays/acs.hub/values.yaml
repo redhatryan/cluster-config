@@ -29,7 +29,7 @@ projects:
     - https://github.com/redhatryan/acs-hub-bootstrap
     destinations: |
       - namespace: '*'
-        server: https://api.acs.etbit.io:6443
+        server: https://kubernetes.default.svc
     extraFields: |
       clusterResourceWhitelist:
       - group: '*'
