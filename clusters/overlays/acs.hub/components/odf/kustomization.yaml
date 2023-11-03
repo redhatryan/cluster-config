@@ -1,2 +1,3 @@
 resources:
 - ../../../../../components/odf-operator/instance/base
+- ../../../../../components/odf-operator/operator/overlays/no-registry
