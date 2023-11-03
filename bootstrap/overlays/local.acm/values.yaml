@@ -110,6 +110,14 @@ applications:
     source:
       path: clusters/overlays/local.acm/components/openshift-monitoring
 
+    #quay-registry:
+    # leave disabled unless needed for demo
+    #enabled: false
+    #annotations:
+    #  argocd.argoproj.io/sync-wave: '21'
+    #source:
+    #  path: clusters/overlays/local.hub/components/quay-registry-operator
+
   #lokistack:
   #  enabled: false
   #  annotations:
