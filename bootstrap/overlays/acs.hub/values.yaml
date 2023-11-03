@@ -88,14 +88,15 @@ applications:
     source:
       path: clusters/overlays/acs.hub/components/certificates
   
-  acs-openshift-monitoring:
-    annotations:
-      argocd.argoproj.io/compare-options: IgnoreExtraneous
-      argocd.argoproj.io/sync-wave: '11'
-    destination:
-      namespace: openshift-monitoring
-    source:
-      path: clusters/overlays/acs.hub/components/openshift-monitoring
+  #Disabled to free up memory for pipelines
+  #acs-openshift-monitoring:
+  #  annotations:
+  #    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  destination:
+  #    namespace: openshift-monitoring
+  #  source:
+  #    path: clusters/overlays/acs.hub/components/openshift-monitoring
 
   #lokistack:
   #  enabled: false
