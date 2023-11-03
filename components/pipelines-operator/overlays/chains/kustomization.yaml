@@ -4,4 +4,7 @@ kind: Kustomization
 resources:
 - ../../base
 - openshift-pipelines-namespace.yaml
-- signing-cert-external.yaml
+
+
+# Look into this later: https://docs.openshift.com/pipelines/1.12/secure/using-tekton-chains-for-openshift-pipelines-supply-chain-security.html
+#- signing-cert-external.yaml
