@@ -1,1 +1,0 @@
-Bootstrap tokens for ESO to access Doppler projects, note that these secrets are not in git.
