@@ -95,11 +95,11 @@ applications:
     source:
       path: clusters/overlays/local.acm/components/certificates
 
-  odf-storage-cluster:
-    annotations:
-      argocd.argoproj.io/sync-wave: '1'
-    source:
-      path: clusters/overlays/local.acm/components/odf
+  #odf-storage-cluster:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '1'
+  #  source:
+  #    path: clusters/overlays/local.acm/components/odf
   
   openshift-monitoring:
     annotations:
