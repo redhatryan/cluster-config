@@ -8,7 +8,7 @@ resources:
 patches:
   - patch: |-
       - op: replace
-        path: /spec/secretStoreRef/name
+        path: /spec/secretStoreRef/1/name
         value: doppler-cluster-acs
     target:
       group: external-secrets.io/v1beta1
