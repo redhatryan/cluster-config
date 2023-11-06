@@ -8,9 +8,12 @@ resources:
 patches:
   - patch: |-
       - op: replace
-        path: /spec/secretStoreRef/1/name
+        path: /spec/secretStoreRef/name
         value: doppler-cluster-acs
     target:
       group: external-secrets.io/v1beta1
       kind: ExternalSecret
       name: letsencrypt-aws
+
+patchesStrategicMerge:
+- letsencrypt-external-aws.yaml
