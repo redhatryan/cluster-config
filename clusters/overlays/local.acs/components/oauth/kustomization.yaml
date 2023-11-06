@@ -1,0 +1,5 @@
+resources:
+- ../../../../../components/oauth/overlays/htpass
+
+patchesStrategicMerge:
+- htpass-secret-external.yaml
