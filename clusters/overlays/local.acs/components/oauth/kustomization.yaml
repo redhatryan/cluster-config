@@ -1,5 +1,5 @@
 resources:
-- ../../../../../components/oauth/overlays/htpass
+- ../../../../../components/oauth/overlays/homelab
 
 patchesStrategicMerge:
 - htpass-secret-external.yaml
