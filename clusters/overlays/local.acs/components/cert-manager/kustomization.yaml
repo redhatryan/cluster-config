@@ -4,12 +4,13 @@ resources:
 #
 #Need to fix: Patch below, or how to bootstrap secret for this hub
 #
-#patches:
-#  - patch: |-
-#      - op: replace
-#        path: /spec/secretStoreRef/name
-#        value: doppler-cluster-acs
-#    target:
-#      group: external-secrets.io/v1beta1
-#      kind: ExternalSecret
-#      name: letsencrypt-aws
+#
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/secretStoreRef/name
+        value: doppler-cluster-acs
+    target:
+      group: external-secrets.io/v1beta1
+      kind: ExternalSecret
+      name: letsencrypt-aws
