@@ -146,7 +146,7 @@ applications:
     destination:
       namespace: openshift-config
     source:
-      path: components/oauth/overlays/homelab
+      path: clusters/overlays/local.acs/components/oauth
   
   acs-registry:
     annotations:
