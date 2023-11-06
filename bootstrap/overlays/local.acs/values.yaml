@@ -111,11 +111,11 @@ applications:
   #      factor: 2
   #      maxDuration: 3m
 
-  acs-odf-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: '1'
-    source:
-      path: components/odf-operator/operator/overlays/no-registry
+  #acs-odf-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '1'
+  #  source:
+  #    path: components/odf-operator/operator/overlays/no-registry
 
   # Add DNS via secret at some point or find another solution
   #dns:
