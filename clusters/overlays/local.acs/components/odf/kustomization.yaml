@@ -7,7 +7,7 @@ resources:
 - ../../../../../components/odf-operator/operator/overlays/no-registry
 
 patches:
-  - path: /patch/kustomization.yaml
+  - path: patch/kustomization.yaml
     target:
       group: kustomize.config.k8s.io/v1beta1
       kind: Kustomization
