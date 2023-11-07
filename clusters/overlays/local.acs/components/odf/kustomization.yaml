@@ -4,7 +4,7 @@ kind: Kustomization
 namespace: openshift-storage
 
 resources:
-- ../../../../../components/odf-operator/overlays/overlays/no-registry
+- ../../../../../components/odf-operator/overlays/no-registry
 
 patches:
   - path: /patch/kustomization.yaml
