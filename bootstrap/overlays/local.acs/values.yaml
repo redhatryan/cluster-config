@@ -164,12 +164,12 @@ applications:
   #  source:
   #    path: components/alertmanager/base
 
-  acs-rbac:
-    annotations:
-      argocd.argoproj.io/compare-options: IgnoreExtraneous
-      argocd.argoproj.io/sync-wave: '11'
-    source:
-      path: clusters/overlays/local.acs/components/rbac
+  #acs-rbac:
+  #  annotations:
+  #    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  source:
+  #    path: clusters/overlays/local.acs/components/rbac
 
   #sso:
   #  annotations:
