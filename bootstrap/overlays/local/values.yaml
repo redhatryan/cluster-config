@@ -34,13 +34,13 @@ applications:
     source:
       path: components/cert-manager-operator/aggregate/overlays/letsencrypt
   
-  lvm-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: '2'
-    destination:
-      namespace: openshift-storage
-    source:
-      path: clusters/overlays/local.acm/components/lvm-operator
+  #lvm-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '2'
+  #  destination:
+  #    namespace: openshift-storage
+  #  source:
+  #    path: clusters/overlays/local.acm/components/lvm-operator
 
   authentication:
     annotations:
