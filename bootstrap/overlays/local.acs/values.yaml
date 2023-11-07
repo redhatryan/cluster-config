@@ -169,7 +169,7 @@ applications:
       argocd.argoproj.io/compare-options: IgnoreExtraneous
       argocd.argoproj.io/sync-wave: '11'
     source:
-      path: components/rbac/base
+      path: clusters/overlays/local.acs/components/rbac
 
   #sso:
   #  annotations:
