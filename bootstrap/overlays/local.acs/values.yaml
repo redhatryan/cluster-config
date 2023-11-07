@@ -168,7 +168,6 @@ applications:
     annotations:
       argocd.argoproj.io/compare-options: IgnoreExtraneous
       argocd.argoproj.io/sync-wave: '11'
-      argocd.argoproj.io/tracking-id: annotation
     source:
       path: clusters/overlays/local.acs/components/rbac
 

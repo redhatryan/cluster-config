@@ -9,3 +9,10 @@ patches:
   target:
     kind: Group
     name: cluster-admins
+- patch: |-
+    - op: add
+      path: /metadata/namespace
+      value: acs-hub
+  target: 
+    kind: ClusterRoleBinding
+    name: cluster-admin-users
