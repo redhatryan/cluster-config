@@ -7,6 +7,6 @@ patches:
         path: /spec/storage/deviceClasses/0/deviceSelector
         value:
           paths:
-            - /dev/sda1
+            - /dev/sda
     target:
       kind: LVMCluster
