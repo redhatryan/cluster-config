@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: openshift-storage
 
 resources:
-- ../../../../../components/odf-operator/operator/overlays/no-registry
+- ../../../../../components/odf-custom/operator/overlays/stable-4.13
