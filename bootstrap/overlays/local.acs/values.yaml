@@ -115,7 +115,7 @@ applications:
     annotations:
       argocd.argoproj.io/sync-wave: '1'
     source:
-      path: components/odf-operator/operator/overlays/no-registry
+      path: clusters/overlays/local.acs/components/odf
 
   # Add DNS via secret at some point or find another solution
   #dns:
