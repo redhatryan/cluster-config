@@ -132,13 +132,13 @@ applications:
     source:
       path: clusters/overlays/local.acs/components/cert-manager
   
-  #acs-lvm-operator:
-  #  annotations:
-  #    argocd.argoproj.io/sync-wave: '2'
-  #  destination:
-  #    namespace: openshift-storage
-  #  source:
-  #   path: clusters/overlays/local.acs/components/lvm-operator
+  acs-lvm-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: '2'
+    destination:
+      namespace: openshift-storage
+    source:
+     path: clusters/overlays/local.acs/components/lvm-operator
 
   acs-authentication:
     annotations:
