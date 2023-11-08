@@ -23,12 +23,12 @@ spec:
               name: adguard-config
               key: AdGuardHome.yaml
         ports:
-        - containerPort: 5353
+        - containerPort: 53
           name: dns
           protocol: UDP
         - containerPort: 3000
           name: http-initial
-        - containerPort: 80
+        - containerPort: 8080
           name: http
           protocol: TCP
         volumeMounts:
