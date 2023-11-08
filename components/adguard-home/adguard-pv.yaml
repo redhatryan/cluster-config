@@ -9,5 +9,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
+  storageClassName: REPLACE
   hostPath:
     path: "/mnt/data/adguard"
