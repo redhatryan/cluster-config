@@ -46,11 +46,11 @@ spec:
               value: United States
           ports:
             - containerPort: 53 # dns
-              hostPort: 30053
+              hostPort: 5353
               name: dns-udp
               protocol: UDP
             - containerPort: 53 # dns
-              hostPort: 30053
+              hostPort: 5353
               name: dns-tcp
               protocol: TCP
             - containerPort: 3000 # initial setup
