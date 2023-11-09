@@ -43,7 +43,7 @@ spec:
               memory: "500Mi"
           env:
             - name: TZ
-              value: Asia/Jerusalem
+              value: United States
           ports:
             - containerPort: 53 # dns
               hostPort: 53

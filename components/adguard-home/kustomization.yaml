@@ -4,5 +4,5 @@ resources:
 - adguard-namespace.yaml
 - adguard-pv.yaml
 - adguard-pvc.yaml
-- adguard-service.yaml
+- adguard-service-custom.yaml
 - adguard-rb.yaml
