@@ -64,4 +64,4 @@ spec:
             name: adguard-config
         - name: adguard-conf
           persistentVolumeClaim:
-            claimName: adguard-conf-pvc
+            claimName: adguard-pvc
