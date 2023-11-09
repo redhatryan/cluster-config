@@ -13,7 +13,7 @@ spec:
       labels:
         app: adguard
     spec:
-      initcontainers:
+      initContainers: # Corrected the case from 'initcontainers' to 'initContainers'
         - name: copy-configmap
           image: busybox
           imagePullPolicy: IfNotPresent
@@ -31,33 +31,34 @@ spec:
               subPath: AdGuardHome.yaml
             - name: adguard-conf
               mountPath: /opt/adguardhome/conf
-    containers:
-      - name: adguard-home
-        image: adguard/adguardhome:latest
-        env:
-        - name: AGH_CONFIG
-          valueFrom:
-            configMapKeyRef:
-              name: adguard-config
-              key: AdGuardHome.yaml
-        ports:
-        - containerPort: 53
-          name: dns
-          protocol: UDP
-        - containerPort: 3000
-          name: http-initial
-        - containerPort: 8080
-          name: http
-          protocol: TCP
-        volumeMounts:
-        - name: adguard-data
-          mountPath: /opt/adguardhome/work
+      containers: # Moved this section to align properly under 'spec'
+        - name: adguard-home
+          image: adguard/adguardhome:latest
+          env:
+            - name: AGH_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                  name: adguard-config
+                  key: AdGuardHome.yaml
+          ports:
+            - containerPort: 53
+              name: dns
+              protocol: UDP
+            - containerPort: 3000
+              name: http-initial
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: adguard-data
+              mountPath: /opt/adguardhome/work
       volumes:
-      - name: adguard-data
-        persistentVolumeClaim:
-          claimName: adguard-pvc
-
-
-
-
-        
+        - name: adguard-data
+          persistentVolumeClaim:
+            claimName: adguard-pvc
+        - name: adguardhome-yaml # Defined the missing 'adguardhome-yaml' volume
+          configMap:
+            name: adguard-config
+        - name: adguard-conf # If you are using a PVC for adguard-conf, you need to define it here
+          persistentVolumeClaim:
+            claimName: adguard-conf-pvc
