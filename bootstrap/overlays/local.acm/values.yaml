@@ -75,14 +75,14 @@ applications:
       repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
       path: bootstrap/policies/overlays/default
 
-  adguard-home:
-    annotations:
-      argocd.argoproj.io/sync-wave: '31'
-    destinations:
-      namespace: acm-policies
-    source:
-      repoURL: https://github.com/redhatryan/cluster-config.git
-      path: clusters/overlays/local.acm/components/adguard-home
+  #adguard-home:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '31'
+  #  destinations:
+  #    namespace: acm-policies
+  #  source:
+  #    repoURL: https://github.com/redhatryan/cluster-config.git
+  #    path: clusters/overlays/local.acm/components/adguard-home
 
   banner:
     annotations:
