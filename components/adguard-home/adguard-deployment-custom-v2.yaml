@@ -14,57 +14,56 @@ spec:
         app: adguard
     spec:
       initContainers:
-      - name: copy-configmap
-        image: busybox
-        imagePullPolicy: IfNotPresent
-        command:
-           - "sh"
-           - "-c"
-           - |
-             if [ ! -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
-               mkdir -p /opt/adguardhome/conf
-               cp /AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
-             fi
-         volumeMounts:
-          - name: adguardhome-yaml
-             mountPath: /AdGuardHome.yaml
-             subPath: AdGuardHome.yaml
-          - name: adguard-conf
-            mountPath: /opt/adguardhome/conf
-         securityContext:
-           runAsUser: 0
+        - name: copy-configmap
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          command:
+            - "sh"
+            - "-c"
+            - |
+              if [ ! -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
+                mkdir -p /opt/adguardhome/conf
+                cp /config/AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
+              fi
+          volumeMounts:
+            - name: adguard-conf
+              mountPath: /opt/adguardhome/conf
+            - name: adguardhome-yaml
+              mountPath: /config
+          securityContext:
+            runAsUser: 0
       containers:
-      - name: adguard-home
-        image: adguard/adguardhome:latest
-        env:
-          - name: AGH_CONFIG
-            valueFrom:
-              configMapKeyRef:
-                name: adguard-config
-                key: AdGuardHome.yaml
-        ports:
-          - containerPort: 53
-            name: dns
-            protocol: UDP
-          - containerPort: 3000
-            name: http-initial
-          - containerPort: 8080
-            name: http
-            protocol: TCP
-        volumeMounts:
-          - name: adguard-data
-            mountPath: /opt/adguardhome/work
+        - name: adguard-home
+          image: adguard/adguardhome:latest
+          env:
+            - name: AGH_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                  name: adguard-config
+                  key: AdGuardHome.yaml
+          ports:
+            - containerPort: 53
+              name: dns
+              protocol: UDP
+            - containerPort: 3000
+              name: http-initial
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - name: adguard-data
+              mountPath: /opt/adguardhome/work
+            - name: adguard-conf
+              mountPath: /opt/adguardhome/conf
       volumes:
-      - name: adguard-data
-        persistentVolumeClaim:
-          claimName: adguard-pvc
-      - name: adguard-conf
-        persistentVolumeClaim: # if you need persistent storage for the config
-          claimName: adguard-config-pvc
-      - name: adguardhome-yaml
-        configMap:
-          name: adguard-config
-          items:
-          - key: AdGuardHome.yaml
-            path: AdGuardHome.yaml
-
+        - name: adguard-data
+          persistentVolumeClaim:
+            claimName: adguard-pvc
+        - name: adguard-conf
+          emptyDir: {}
+        - name: adguardhome-yaml
+          configMap:
+            name: adguard-config
+            items:
+              - key: AdGuardHome.yaml
+                path: AdGuardHome.yaml
