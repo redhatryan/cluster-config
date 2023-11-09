@@ -14,25 +14,25 @@ spec:
         app: adguard
     spec:
       initContainers:
-       - name: copy-configmap
-         image: busybox
-         imagePullPolicy: IfNotPresent
-         command:
-            - "sh"
-            - "-c"
-            - |
-              if [ ! -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
-                mkdir -p /opt/adguardhome/conf
-                cp /AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
-              fi
-          volumeMounts:
-           - name: adguardhome-yaml
-              mountPath: /AdGuardHome.yaml
-              subPath: AdGuardHome.yaml
-           - name: adguard-conf
-             mountPath: /opt/adguardhome/conf
-          securityContext:
-            runAsUser: 0
+      - name: copy-configmap
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command:
+           - "sh"
+           - "-c"
+           - |
+             if [ ! -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
+               mkdir -p /opt/adguardhome/conf
+               cp /AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
+             fi
+         volumeMounts:
+          - name: adguardhome-yaml
+             mountPath: /AdGuardHome.yaml
+             subPath: AdGuardHome.yaml
+          - name: adguard-conf
+            mountPath: /opt/adguardhome/conf
+         securityContext:
+           runAsUser: 0
       containers:
       - name: adguard-home
         image: adguard/adguardhome:latest
