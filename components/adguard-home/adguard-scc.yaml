@@ -13,4 +13,4 @@ fsGroup:
 supplementalGroups:
   type: RunAsAny
 users:
-- system:serviceaccount:adguard:default
+  - system:serviceaccount:adguard:default
