@@ -10,7 +10,7 @@ spec:
   ports:
     - protocol: UDP
       port: 53
-      nodePort: 35353 # Use a high port number to avoid conflicts
+      nodePort: 30353 # Use a high port number to avoid conflicts
     - protocol: TCP
       port: 53
-      nodePort: 35353
+      nodePort: 30353
