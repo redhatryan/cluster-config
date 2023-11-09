@@ -61,4 +61,4 @@ spec:
             name: adguard-config
         - name: adguard-conf # If you are using a PVC for adguard-conf, you need to define it here
           persistentVolumeClaim:
-            claimName: adguard-conf-pvc
+            claimName: adguard-pvc
