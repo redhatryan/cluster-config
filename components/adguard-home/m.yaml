@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguard-deployment-custom
+  namespace: adguard-home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adguard
+  template:
+    metadata:
+      labels:
+        app: adguard
+    spec:
+      initContainers:
+        - name: copy-configmap
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          command:
+            - "sh"
+            - "-c"
+            - |
+              if [ ! -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
+                mkdir -p /opt/adguardhome/conf
+                cp /AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
+              fi
+          volumeMounts:
+            - name: adguardhome-yaml
+              mountPath: /AdGuardHome.yaml
+              subPath: AdGuardHome.yaml
+            - name: adguard-conf
+              mountPath: /opt/adguardhome/conf
+          securityContext:
+            runAsUser: 0
+      containers:
+        - name: adguard-home
+          image: adguard/adguardhome:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "500Mi"
+          env:
+            - name: TZ
+              value: Asia/Jerusalem
+          ports:
+            - containerPort: 53 # dns
+              hostPort: 53
+              name: dns-udp
+              protocol: UDP
+            - containerPort: 53 # dns
+              hostPort: 53
+              name: dns-tcp
+              protocol: TCP
+            - containerPort: 3000 # initial setup
+              name: http-initial
+          volumeMounts:
+            - name: adguard-conf
+              mountPath: /opt/adguardhome/conf
+      volumes:
+        - name: adguardhome-yaml
+          configMap:
+            name: adguard-config
+        - name: adguard-conf
+          persistentVolumeClaim:
+            claimName: adguard-conf-pvc
