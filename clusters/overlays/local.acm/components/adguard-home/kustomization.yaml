@@ -16,3 +16,17 @@ patches:
   target:
     kind: PersistentVolume
     name: adguard-pv
+- patch: |-
+    - op: replace
+      path: /spec/storageClassName
+      value: "lvms-vg1"
+  target:
+    kind: PersistentVolumeClaim
+    name: adguard-pvc-conf
+- patch: |-
+    - op: replace
+      path: /spec/storageClassName
+      value: "lvms-vg1"
+  target:
+    kind: PersistentVolume
+    name: adguard-pv-conf
