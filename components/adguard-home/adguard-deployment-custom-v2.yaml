@@ -13,7 +13,25 @@ spec:
       labels:
         app: adguard
     spec:
-      containers:
+      initcontainers:
+        - name: copy-configmap
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          command:
+            - "sh"
+            - "-c"
+            - |
+              if [ ! -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
+                mkdir -p /opt/adguardhome/conf
+                cp /AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
+              fi
+          volumeMounts:
+           - name: adguardhome-yaml
+              mountPath: /AdGuardHome.yaml
+              subPath: AdGuardHome.yaml
+            - name: adguard-conf
+              mountPath: /opt/adguardhome/conf
+    containers:
       - name: adguard-home
         image: adguard/adguardhome:latest
         env:
@@ -34,23 +52,6 @@ spec:
         volumeMounts:
         - name: adguard-data
           mountPath: /opt/adguardhome/work
-      - name: copy-configmap
-          image: busybox
-          imagePullPolicy: IfNotPresent
-          command:
-            - "sh"
-            - "-c"
-            - |
-              if [ ! -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
-                mkdir -p /opt/adguardhome/conf
-                cp /AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
-              fi
-          volumeMounts:
-           - name: adguardhome-yaml
-              mountPath: /AdGuardHome.yaml
-              subPath: AdGuardHome.yaml
-            - name: adguard-conf
-              mountPath: /opt/adguardhome/conf
       volumes:
       - name: adguard-data
         persistentVolumeClaim:
