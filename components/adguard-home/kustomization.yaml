@@ -1,6 +1,6 @@
 resources:
 - adguard-configmap.yaml
-- adguard-deployment-custom.yaml
+- adguard-deployment.yaml
 - adguard-namespace.yaml
 - adguard-pv.yaml
 - adguard-pvc.yaml
