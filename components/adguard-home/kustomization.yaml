@@ -6,4 +6,3 @@ resources:
 - adguard-pvc.yaml
 - adguard-service.yaml
 - adguard-rb.yaml
-- adguard-cr.yaml
