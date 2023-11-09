@@ -13,24 +13,6 @@ spec:
       labels:
         app: adguard
     spec:
-      initContainers: # Corrected the case from 'initcontainers' to 'initContainers'
-        - name: copy-configmap
-          image: busybox
-          imagePullPolicy: IfNotPresent
-          command:
-            - "sh"
-            - "-c"
-            - |
-              if [ ! -f /opt/adguardhome/conf/AdGuardHome.yaml ]; then
-                mkdir -p /opt/adguardhome/conf
-                cp /AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
-              fi
-          volumeMounts:
-            - name: adguardhome-yaml
-              mountPath: /AdGuardHome.yaml
-              subPath: AdGuardHome.yaml
-            - name: adguard-conf
-              mountPath: /opt/adguardhome/conf
       containers: # Moved this section to align properly under 'spec'
         - name: adguard-home
           image: adguard/adguardhome:latest
@@ -59,6 +41,3 @@ spec:
         - name: adguardhome-yaml # Defined the missing 'adguardhome-yaml' volume
           configMap:
             name: adguard-config
-        - name: adguard-conf # If you are using a PVC for adguard-conf, you need to define it here
-          persistentVolumeClaim:
-            claimName: adguard-pvc
