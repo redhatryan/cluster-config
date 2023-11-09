@@ -40,6 +40,6 @@ spec:
         - name: adguard-data
           persistentVolumeClaim:
             claimName: adguard-pvc
-        - name: adguard-conf # Defined the missing 'adguardhome-yaml' volume
-          persistentVolumeClaim:
-            claimName: adguard-pvc
+        - name: adguard-conf
+          configMap:
+            name: adguard-config
