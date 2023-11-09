@@ -34,10 +34,12 @@ spec:
           volumeMounts:
             - name: adguard-data
               mountPath: /opt/adguardhome/work
+            - name: adguard-conf
+              mountPath: /opt/adguardhome/conf
       volumes:
         - name: adguard-data
           persistentVolumeClaim:
             claimName: adguard-pvc
-        - name: adguardhome-yaml # Defined the missing 'adguardhome-yaml' volume
+        - name: adguard-conf # Defined the missing 'adguardhome-yaml' volume
           configMap:
             name: adguard-config
