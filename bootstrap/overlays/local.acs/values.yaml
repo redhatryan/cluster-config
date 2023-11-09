@@ -228,17 +228,17 @@ applications:
     source:
       path: components/clean-completed-pods/base
 
-  acs-pipeline-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: "21"
-      argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    destination:
-      namespace: openshift-operators
-    source:
-      path: components/pipelines-operator/overlays/chains
-    syncPolicyRetry:
-      limit: 5
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
+  #acs-pipeline-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: "21"
+  #    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  #  destination:
+  #    namespace: openshift-operators
+  #  source:
+  #    path: components/pipelines-operator/overlays/chains
+  #  syncPolicyRetry:
+  #    limit: 5
+  #    backoff:
+  #      duration: 5s
+  #      factor: 2
+  #      maxDuration: 3m
