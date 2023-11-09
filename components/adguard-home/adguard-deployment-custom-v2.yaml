@@ -26,7 +26,7 @@ spec:
                 cp /AdGuardHome.yaml /opt/adguardhome/conf/AdGuardHome.yaml
               fi
           volumeMounts:
-           - name: adguardhome-yaml
+            - name: adguardhome-yaml
               mountPath: /AdGuardHome.yaml
               subPath: AdGuardHome.yaml
             - name: adguard-conf
