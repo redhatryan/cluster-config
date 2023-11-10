@@ -32,6 +32,14 @@ applications:
   #  source:
   #    path: components/acs-operator/overlays/secured-cluster
 
+  odf-instance:
+    annotations:
+      argocd.argoproj.io/sync-wave: '2'
+    destination:
+      namespace: openshift-storage
+    source:
+      path: components/odf-operator/instance/base
+
   acm-hub:
     annotations:
       argocd.argoproj.io/sync-wave: '21'
