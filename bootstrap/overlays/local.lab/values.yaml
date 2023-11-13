@@ -157,13 +157,13 @@ applications:
   #  source:
   #    path: components/acs-operator/overlays/secured-cluster
 
-  odf-instance:
-    annotations:
-      argocd.argoproj.io/sync-wave: '4'
-    destination:
-      namespace: openshift-storage
-    source:
-      path: clusters/overlays/local.lab/components/odf
+  #odf-instance:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '4'
+  #  destination:
+  #    namespace: openshift-storage
+  #  source:
+  #    path: clusters/overlays/local.lab/components/odf
 
   acm-hub:
     annotations:
