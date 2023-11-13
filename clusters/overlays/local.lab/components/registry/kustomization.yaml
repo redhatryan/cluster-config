@@ -8,3 +8,4 @@ patches:
         value: lso-vg1
     target:
       kind: PersistentVolumeClaim
+      name: image-registry
