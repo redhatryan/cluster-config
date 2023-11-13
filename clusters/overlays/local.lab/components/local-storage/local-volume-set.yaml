@@ -16,5 +16,5 @@ spec:
   fsType: xfs
   deviceInclusionSpec:
     deviceTypes:
-      - /dev/sda
+      - disk
     minSize: 100G
