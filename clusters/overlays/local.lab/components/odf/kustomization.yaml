@@ -5,12 +5,12 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/pvPool/storageClass
-        value: lso-vg1
+        value: lvms-vg1
     target:
       kind: BackingStore
   - patch: |-
       - op: replace
         path: /spec/multiCloudGateway/dbStorageClassName
-        value: lso-vg1
+        value: lvms-vg1
     target:
       kind: StorageCluster
