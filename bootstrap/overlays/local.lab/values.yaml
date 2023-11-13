@@ -43,6 +43,14 @@ applications:
     destination:
       namespace: openshift-storage
     source:
+      path: components/local-storage/operator/overlays/stable
+
+  local-storage-instance:
+    annotations:
+      argocd.argoproj.io/sync-wave: '3'
+    destination:
+      namespace: openshift-storage
+    source:
       path: clusters/overlays/local.lab/components/local-storage
 
   authentication:

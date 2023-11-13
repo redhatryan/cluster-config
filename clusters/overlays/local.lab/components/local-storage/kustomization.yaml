@@ -1,5 +1,4 @@
 resources:
-- ../../../../../components/local-storage/operator/overlays/stable
 - local-volume-discovery.yaml
 - local-volume-set.yaml
 
