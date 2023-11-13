@@ -5,7 +5,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/storageClassName
-        value: lso-vg1
+        value: "lso-vg1"
     target:
       kind: PersistentVolumeClaim
       name: image-registry
