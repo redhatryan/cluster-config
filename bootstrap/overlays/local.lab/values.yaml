@@ -61,13 +61,13 @@ applications:
     source:
       path: components/oauth/overlays/homelab
   
-  registry:
-    annotations:
-      argocd.argoproj.io/sync-wave: '5'
-    destination:
-      namespace: openshift-image-registry
-    source:
-      path: clusters/overlays/local.lab/components/registry
+  #registry:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '5'
+  #  destination:
+  #    namespace: openshift-image-registry
+  #  source:
+  #    path: clusters/overlays/local.lab/components/registry
 
   #alertmanager:
   #  annotations:
