@@ -7,12 +7,8 @@ spec:
   nodeSelector:
     nodeSelectorTerms:
       - matchExpressions:
-          - key: cluster.ocs.openshift.io/openshift-storage
+          - key: kubernetes.io/hostname
             operator: In
             values:
-              - ''
-  tolerations:
-    - effect: NoSchedule
-      key: node.ocs.openshift.io/storage
-      operator: Equal
-      value: 'true'
+              - lab
+              - lab-worker
