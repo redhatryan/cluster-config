@@ -39,7 +39,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/centralEndpoint
-        value: central-stackrox.apps.acs.etbit.io:443
+        value: central-stackrox.apps.lab.etbit.io:443
     target:
       kind: SecuredCluster
 
