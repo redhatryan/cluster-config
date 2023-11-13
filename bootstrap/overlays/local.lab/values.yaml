@@ -36,22 +36,30 @@ applications:
       namespace: cert-manager-operator
     source:
       path: components/cert-manager-operator/aggregate/overlays/letsencrypt
-  
-  local-storage-operator:
+
+  lvm-operator:
     annotations:
       argocd.argoproj.io/sync-wave: '2'
     destination:
       namespace: openshift-storage
     source:
-      path: components/local-storage/operator/overlays/stable
+      path: clusters/overlays/local.lab/components/lvm-operator
+  
+  #local-storage-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '2'
+  #  destination:
+  #    namespace: openshift-storage
+  #  source:
+  #    path: components/local-storage/operator/overlays/stable
 
-  local-storage-instance:
-    annotations:
-      argocd.argoproj.io/sync-wave: '3'
-    destination:
-      namespace: openshift-storage
-    source:
-      path: clusters/overlays/local.lab/components/local-storage
+  #local-storage-instance:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '3'
+  #  destination:
+  #    namespace: openshift-storage
+  #  source:
+  #    path: clusters/overlays/local.lab/components/local-storage
 
   authentication:
     annotations:
@@ -141,13 +149,13 @@ applications:
     source:
       path: components/clean-completed-pods/base
 
-  acs:
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: stackrox
-    source:
-      path: clusters/overlays/local.lab/components/acs-operator
+  #acs:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: stackrox
+  #  source:
+  #    path: clusters/overlays/local.lab/components/acs-operator
 
   #acs-secured-cluster:
   #  annotations:
@@ -157,13 +165,13 @@ applications:
   #  source:
   #    path: components/acs-operator/overlays/secured-cluster
 
-  odf-instance:
-    annotations:
-      argocd.argoproj.io/sync-wave: '4'
-    destination:
-      namespace: openshift-storage
-    source:
-      path: clusters/overlays/local.lab/components/odf
+  #odf-instance:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '4'
+  #  destination:
+  #    namespace: openshift-storage
+  #  source:
+  #    path: clusters/overlays/local.lab/components/odf
 
   acm-hub:
     annotations:
