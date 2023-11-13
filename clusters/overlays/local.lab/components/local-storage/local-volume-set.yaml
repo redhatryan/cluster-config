@@ -17,4 +17,4 @@ spec:
   deviceInclusionSpec:
     deviceTypes:
       - /dev/sda
-    minSize: 10G
+    minSize: 100G
