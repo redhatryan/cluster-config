@@ -59,7 +59,7 @@ applications:
     destination:
       namespace: openshift-image-registry
     source:
-      path: components/registry-sno/base
+      path: clusters/overlays/local.lab/components/registry
 
   #alertmanager:
   #  annotations:
