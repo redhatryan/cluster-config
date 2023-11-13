@@ -4,7 +4,7 @@ resources:
 patches:
   - patch: |-
       - op: replace
-        path: /spec/storageClassName
+        path: /spec/2/storageClassName
         value: lso-vg1
     target:
       kind: PersistentVolumeClaim
