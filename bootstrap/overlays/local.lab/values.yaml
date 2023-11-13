@@ -1,0 +1,149 @@
+default:
+  app:
+    enabled: true
+    enableAutoSync: true
+    autoSyncPrune: false
+    project: cluster-config
+    labels:
+     app-source: local.lab
+     repo: cluster-config
+    destination:
+      namespace: openshift-gitops
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/redhatryan/cluster-config.git
+      targetRevision: HEAD
+
+applications:
+
+  #acs:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: stackrox
+  #  source:
+  #    path: clusters/overlays/local.hub/components/acs-operator
+
+  #acs-secured-cluster:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: rhacs-operator
+  #  source:
+  #    path: components/acs-operator/overlays/secured-cluster
+
+  odf-instance:
+    annotations:
+      argocd.argoproj.io/sync-wave: '2'
+    destination:
+      namespace: openshift-storage
+    source:
+      path: components/odf-operator/instance/base
+
+  acm-hub:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destinations:
+      namespace: open-cluster-management
+    source:
+      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+      path: components/apps/acm/overlays/hub
+
+  #acm-observability:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '31'
+  #  labels:
+  #    repo: acm-hub-bootstrap
+  #  destinations:
+  #   namespace: open-cluster-management-observability
+  #  source:
+  #   repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+  #    path: components/apps/acm/overlays/observability
+
+  #acm-clusters:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '31'
+  #  labels:
+  #    repo: ignore
+  #  destinations:
+  #    namespace: openshift-gitops
+  #  source:
+  #    repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+  #    path: components/clusters/base
+  #    # Always use latest so we can can set gitops-revision for commit pinnning,
+  #    # otherwise it's chicken and egg problem.
+  #    targetRevision: HEAD
+
+  acm-policies:
+    annotations:
+      argocd.argoproj.io/sync-wave: '31'
+    destinations:
+      namespace: acm-policies
+    source:
+      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+      path: bootstrap/policies/overlays/default
+
+  #adguard-home:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '31'
+  #  destinations:
+  #    namespace: acm-policies
+  #  source:
+  #    repoURL: https://github.com/redhatryan/cluster-config.git
+  #    path: clusters/overlays/local.acm/components/adguard-home
+
+  banner:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: clusters/overlays/local.acm/components/banner
+
+  console-links:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: clusters/overlays/local.acm/components/consolelinks
+
+  certificates:
+    annotations:
+      argocd.argoproj.io/sync-wave: "3"
+    destination:
+      namespace: cert-manager-operator
+    source:
+      path: clusters/overlays/local.acm/components/certificates
+
+  #odf-storage-cluster:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '1'
+  #  source:
+  #    path: clusters/overlays/local.acm/components/odf
+  
+  #openshift-monitoring:
+  #  annotations:
+  #    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  destination:
+  #    namespace: openshift-monitoring
+  #  source:
+  #    path: clusters/overlays/local.acm/components/openshift-monitoring
+
+    #quay-registry:
+    # leave disabled unless needed for demo
+    #enabled: false
+    #annotations:
+    #  argocd.argoproj.io/sync-wave: '21'
+    #source:
+    #  path: clusters/overlays/local.hub/components/quay-registry-operator
+
+  #lokistack:
+  #  enabled: false
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  source:
+  #    path: clusters/overlays/local.hub/components/lokistack
+  #  syncPolicyRetry:
+  #    limit: 5
+  #    backoff:
+  #      duration: 5s
+  #      factor: 2
+  #      maxDuration: 3m
