@@ -69,13 +69,13 @@ applications:
     source:
       path: components/oauth/overlays/homelab
   
-  #registry:
-  #  annotations:
-  #    argocd.argoproj.io/sync-wave: '5'
-  #  destination:
-  #    namespace: openshift-image-registry
-  #  source:
-  #    path: clusters/overlays/local.lab/components/registry
+  registry:
+    annotations:
+      argocd.argoproj.io/sync-wave: '5'
+    destination:
+      namespace: openshift-image-registry
+    source:
+      path: clusters/overlays/local.lab/components/registry
 
   #alertmanager:
   #  annotations:
@@ -149,13 +149,13 @@ applications:
     source:
       path: components/clean-completed-pods/base
 
-  #acs:
-  #  annotations:
-  #    argocd.argoproj.io/sync-wave: '21'
-  #  destination:
-  #    namespace: stackrox
-  #  source:
-  #    path: clusters/overlays/local.lab/components/acs-operator
+  acs:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destination:
+      namespace: stackrox
+    source:
+      path: clusters/overlays/local.lab/components/acs-operator
 
   #acs-secured-cluster:
   #  annotations:
