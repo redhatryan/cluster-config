@@ -5,7 +5,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/storageClassName
-        value: openshift-storage.noobaa.io
+        value: lso-vg1
     target:
       kind: PersistentVolumeClaim
       name: image-registry
