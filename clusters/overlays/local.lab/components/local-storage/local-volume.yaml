@@ -13,8 +13,8 @@ spec:
               - lab
               - lab-worker
   storageClassDevices:
-    - storageClassName: "local-sc"
+    - storageClassName: "lso-vg1"
       volumeMode: Filesystem
       fsType: xfs
       devicePaths:
-        - /path/to/device
+        - /dev/sda

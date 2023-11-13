@@ -9,13 +9,12 @@ spec:
           - key: kubernetes.io/hostname
             operator: In
             values:
-              - worker-0
-              - worker-1
-  storageClassName: local-fs
+              - lab
+              - lab-worker
+  storageClassName: lso-vg1
   volumeMode: Filesystem
   fsType: xfs
   deviceInclusionSpec:
     deviceTypes:
-      - disk
-      - part
+      - /dev/sda
     minSize: 10G
