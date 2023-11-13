@@ -9,3 +9,4 @@ patches:
     target:
       kind: PersistentVolumeClaim
       name: image-registry
+      namespace: openshift-image-registry
