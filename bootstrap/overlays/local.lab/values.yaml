@@ -183,7 +183,7 @@ applications:
      namespace: open-cluster-management-observability
     source:
      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
-      path: components/apps/acm/overlays/observability
+     path: components/apps/acm/overlays/observability
 
   #acm-clusters:
   #  annotations:
