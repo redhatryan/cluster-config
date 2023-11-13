@@ -215,11 +215,11 @@ applications:
     source:
       path: clusters/overlays/local.lab/components/banner
 
-  console-links:
-    annotations:
-      argocd.argoproj.io/sync-wave: '11'
-    source:
-      path: clusters/overlays/local.lab/components/consolelinks
+  #console-links:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  source:
+  #    path: clusters/overlays/local.lab/components/consolelinks
 
   certificates:
     annotations:
