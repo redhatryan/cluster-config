@@ -1,5 +1,5 @@
 resources:
-- ../../../../../components/registry-sno-base/base
+- ../../../../../components/registry-sno/base
 
 patches:
   - patch: |-
