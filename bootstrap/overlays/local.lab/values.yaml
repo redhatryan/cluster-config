@@ -163,7 +163,7 @@ applications:
     destination:
       namespace: openshift-storage
     source:
-      path: components/odf-operator/instance/base
+      path: clusters/overlays/local.lab/components/odf
 
   acm-hub:
     annotations:
