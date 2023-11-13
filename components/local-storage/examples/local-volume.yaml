@@ -10,9 +10,8 @@ spec:
           - key: kubernetes.io/hostname
             operator: In
             values:
-              - ip-10-0-140-183
-              - ip-10-0-158-139
-              - ip-10-0-164-33
+              - lab
+              - lab-worker
   storageClassDevices:
     - storageClassName: "local-sc"
       volumeMode: Filesystem
