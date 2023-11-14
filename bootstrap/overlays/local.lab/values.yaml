@@ -100,13 +100,13 @@ applications:
           factor: 2
           maxDuration: 3m
 
-  alertmanager:
-    annotations:
-      argocd.argoproj.io/sync-wave: '11'
-    destination:
-      namespace: openshift-monitoring
-    source:
-      path: components/alertmanager/base
+  #alertmanager:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  destination:
+  #    namespace: openshift-monitoring
+  #  source:
+  #    path: components/alertmanager/base
 
   rbac:
     annotations:
