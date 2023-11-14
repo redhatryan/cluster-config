@@ -8,7 +8,7 @@ data:
     enableUserWorkload: true
     prometheusK8s:
       externalLabels:
-        cluster: local.hub
+        cluster: local.lab
       volumeClaimTemplate:
        spec:
          accessModes:
