@@ -2,6 +2,7 @@ apiVersion: operator.gatekeeper.sh/v1alpha1
 kind: Gatekeeper
 metadata:
   name: gatekeeper
+  namespace: openshift-operators
 spec:
   audit:
     logLevel: INFO
