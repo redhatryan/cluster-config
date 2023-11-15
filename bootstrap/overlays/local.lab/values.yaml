@@ -255,6 +255,12 @@ applications:
       repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
       path: bootstrap/policies/overlays/default
 
+  acm-day2-policies:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: clusters/overlays/local.lab/components/acm-policies
+
   #adguard-home:
   #  annotations:
   #    argocd.argoproj.io/sync-wave: '31'
