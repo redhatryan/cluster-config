@@ -158,7 +158,7 @@ applications:
 
   compliance-operator:
     annotations:
-      argocd.argoproj.io/sync-wave: '21'
+      argocd.argoproj.io/sync-wave: '11'
     destination:
       namespace: openshift-operators
     source:
