@@ -85,20 +85,20 @@ applications:
     source:
       path: clusters/overlays/local.lab/components/registry
 
-  #pipeline-operator:
-  #    annotations:
-  #      argocd.argoproj.io/sync-wave: "21"
-  #      argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-  #    destination:
-  #      namespace: openshift-operators
-  #    source:
-  #      path: components/pipelines-operator/overlays/chains
-  #    syncPolicyRetry:
-  #      limit: 5
-  #      backoff:
-  #        duration: 5s
-  #        factor: 2
-  #        maxDuration: 3m
+  pipeline-operator:
+      annotations:
+        argocd.argoproj.io/sync-wave: "21"
+        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+      destination:
+        namespace: openshift-operators
+      source:
+        path: components/pipelines-operator/overlays/chains
+      syncPolicyRetry:
+        limit: 5
+        backoff:
+          duration: 5s
+          factor: 2
+          maxDuration: 3m
 
   #alertmanager:
   #  annotations:
@@ -261,13 +261,13 @@ applications:
     source:
       path: clusters/overlays/local.lab/components/acm-policies
 
-  #gatekeeper:
-  #  annotations:
-  #    argocd.argoproj.io/sync-wave: '11'
-  #  destination:
-  #    namespace: openshift-operators
-  #  source:
-  #    path: components/gatekeeper-operator/overlays/upstream 
+  gatekeeper:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    destination:
+      namespace: openshift-operators
+    source:
+      path: components/gatekeeper-operator/overlays/upstream 
 
   #adguard-home:
   #  annotations:
