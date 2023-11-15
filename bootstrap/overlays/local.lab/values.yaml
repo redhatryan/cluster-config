@@ -92,13 +92,7 @@ applications:
       destination:
         namespace: openshift-operators
       source:
-        path: components/pipelines-operator/overlays/chains
-      syncPolicyRetry:
-        limit: 5
-        backoff:
-          duration: 5s
-          factor: 2
-          maxDuration: 3m
+        path: components/openshift-pipeline-operator/overlays/stable
 
   #alertmanager:
   #  annotations:
