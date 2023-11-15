@@ -85,7 +85,7 @@ applications:
     source:
       path: clusters/overlays/local.lab/components/registry
 
-  pipeline-operator:
+  acs-pipeline-operator:
       annotations:
         argocd.argoproj.io/sync-wave: "21"
         argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
