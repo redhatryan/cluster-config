@@ -156,6 +156,14 @@ applications:
     source:
       path: components/web-terminal-operator/base
 
+  compliance-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destination:
+      namespace: openshift-operators
+    source:
+      path: components/compliance-operator/aggregate/scheduled
+
   defrag-etcd:
     annotations:
       argocd.argoproj.io/sync-wave: '99'
