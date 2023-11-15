@@ -257,7 +257,7 @@ applications:
 
   acm-day2-policies:
     annotations:
-      argocd.argoproj.io/sync-wave: '11'
+      argocd.argoproj.io/sync-wave: '41'
     source:
       path: clusters/overlays/local.lab/components/acm-policies
 
