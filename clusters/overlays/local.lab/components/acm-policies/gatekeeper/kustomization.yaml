@@ -1,4 +1,2 @@
 resources:
-- gatekeeper-install-policy.yaml
 - gatekeeper-exclude-namespaces.yaml
-- config-policy-namespace.yaml

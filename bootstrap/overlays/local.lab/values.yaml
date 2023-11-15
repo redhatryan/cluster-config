@@ -261,6 +261,12 @@ applications:
     source:
       path: clusters/overlays/local.lab/components/acm-policies
 
+  gatekeeper:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/gatekeeper-operator/overlays/upstream 
+
   #adguard-home:
   #  annotations:
   #    argocd.argoproj.io/sync-wave: '31'
