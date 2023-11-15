@@ -1,10 +1,10 @@
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:
-  name: gatekeeper-operator-sub
-  namespace: openshift-gatekeeper-operator
+  name: gatekeeper-operator-product
+  namespace: openshift-operators
 spec:
   channel: stable
   name: gatekeeper-operator
-  source: gatekeeper-operator
-  sourceNamespace: openshift-gatekeeper-operator
+  source: redhat-operators
+  sourceNamespace: openshift-operators
