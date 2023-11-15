@@ -164,13 +164,13 @@ applications:
     source:
       path: components/compliance-operator/aggregate/scheduled
 
-  oadp-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: openshift-operators
-    source:
-      path: components/openshift-api-for-data-protection-operator/overlays/stable
+  #oadp-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: openshift-operators
+  #  source:
+  #    path: components/openshift-api-for-data-protection-operator/overlays/stable
 
   defrag-etcd:
     annotations:
