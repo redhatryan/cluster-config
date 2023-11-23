@@ -8,7 +8,7 @@ metadata:
 data:
   kubernetes.yaml: |
     mode: cluster
-  settings.yaml:
+  settings.yaml: |
     title: Etbit Homelab
     background: https://unsplash.com/photos/a-person-standing-on-top-of-a-rocky-hill-z4ELCkNmnz0
     headerStyle: clean
