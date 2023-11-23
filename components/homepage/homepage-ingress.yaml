@@ -11,6 +11,7 @@ metadata:
     gethomepage.dev/group: Cluster Management
     gethomepage.dev/icon: homepage.png
     gethomepage.dev/name: Homepage
+    route.openshift.io/termination: "reencrypt"
 spec:
   rules:
     - host: "homepage.apps.lab.etbit.io"
@@ -23,3 +24,7 @@ spec:
                 name: homepage
                 port:
                   number: 3000
+ tls:
+  - hosts:
+    - homepage.apps.lab.etbit.io
+    secretName: openshift-wildcard     
