@@ -5,7 +5,7 @@ resources:
 - homepage-cr.yaml
 - homepage-crb.yaml
 - homepage-deployment.yaml
-- homepage-ingress.yaml
+#- homepage-ingress.yaml
 - homepage-sa.yaml
 - homepage-secret.yaml
 - homepage-service.yaml
