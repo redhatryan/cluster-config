@@ -16,8 +16,8 @@ data:
   custom.css: ""
   custom.js: ""
   bookmarks.yaml: |
-    - Developer:
-        - Github:
+    - Github:
+        - RedHatRyan:
             - abbr: GH
               href: https://github.com/redhatryan
   services.yaml: |
