@@ -21,18 +21,18 @@ data:
             - abbr: GH
               href: https://github.com/redhatryan
   services.yaml: |
-    - My First Group:
-        - My First Service:
+    - RHACM:
+        - RHACM Dashboard:
             href: https://console-openshift-console.apps.lab.etbit.io/multicloud/infrastructure/clusters/managed
             description: Red Hat Advanced Cluster Management
 
-    - My Second Group:
-        - My Second Service:
+    - RHACS:
+        - RHACS Dashboard:
             href: https://central-stackrox.apps.lab.etbit.io/
             description: Red Hat Advanced Cluster Security
 
-    - My Third Group:
-        - My Third Service:
+    - OpenShift GitOps:
+        - ArgoCD Dashboard:
             href: https://openshift-gitops-server-openshift-gitops.apps.lab.etbit.io/
             description: OpenShift GitOps
   widgets.yaml: |
