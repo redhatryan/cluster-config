@@ -13,7 +13,7 @@ metadata:
     gethomepage.dev/name: Homepage
 spec:
   rules:
-    - host: "homepage.lab.etbit.io"
+    - host: "homepage.apps.lab.etbit.io"
       http:
         paths:
           - path: "/"
