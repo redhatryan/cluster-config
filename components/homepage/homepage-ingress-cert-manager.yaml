@@ -8,7 +8,6 @@ metadata:
     gethomepage.dev/group: Cluster Management
     gethomepage.dev/icon: homepage.png
     gethomepage.dev/name: Homepage
-spec:
   name: homepage
   namespace: default
   labels:
