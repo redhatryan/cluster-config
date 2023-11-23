@@ -3,6 +3,8 @@ kind: ServiceAccount
 metadata:
   name: homepage
   namespace: default
+  annotations:
+    argocd.argoproj.io/sync-wave: '-1'
   labels:
     app.kubernetes.io/name: homepage
 secrets:
