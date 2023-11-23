@@ -1,0 +1,20 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: homepage
+  namespace: default
+  labels:
+    app.kubernetes.io/name: homepage
+spec:
+  host: homepage.apps.etbit.io
+  to:
+    kind: Service
+    name: homepage
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: reencrypt
+    insecureEdgeTerminationPolicy: Allow
+  wildcardPolicy: None
+
