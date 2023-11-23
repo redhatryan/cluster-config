@@ -24,7 +24,6 @@ spec:
                 number: 443
           path: /
           pathType: Prefix
-  tls:
      # http:
      #   paths:
      #     - path: "/"
