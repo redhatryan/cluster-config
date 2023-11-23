@@ -278,6 +278,12 @@ applications:
     source:
       path: clusters/overlays/local.lab/components/banner
 
+   homepage:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/homepage/
+
   console-links:
     annotations:
       argocd.argoproj.io/sync-wave: '11'
