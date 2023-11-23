@@ -27,7 +27,7 @@ spec:
           image: "ghcr.io/gethomepage/homepage:latest"
           imagePullPolicy: Always
           ports:
-            - name: https
+            - name: http
               containerPort: 3000
               protocol: TCP
           volumeMounts:
