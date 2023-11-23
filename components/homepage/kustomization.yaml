@@ -8,4 +8,4 @@ resources:
 #- homepage-ingress.yaml
 - homepage-sa.yaml
 - homepage-secret.yaml
-- homepage-service.yaml
+- homepage-service-secure.yaml
