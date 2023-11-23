@@ -28,7 +28,7 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: https
-              containerPort: 6443
+              containerPort: 3000
               protocol: TCP
           volumeMounts:
             - mountPath: /app/config/custom.js
