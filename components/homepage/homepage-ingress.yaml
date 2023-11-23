@@ -34,6 +34,6 @@ spec:
      #           port:
      #             number: 3000
  tls:
-  - hosts:
-    - homepage.apps.lab.etbit.io
-    secretName: openshift-wildcard     
+   - hosts:
+     - homepage.apps.lab.etbit.io
+     secretName: openshift-wildcard     
