@@ -6,8 +6,8 @@ spec:
   type: ClusterIP
   ports:
     - port: 2368
-      targetPort: http
+      targetPort: https
       protocol: TCP
-      name: http
+      name: https
   selector:
     app: etbit-ghost
