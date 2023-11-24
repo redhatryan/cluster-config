@@ -1,0 +1,11 @@
+resources:
+- ../../../../../components/ghost
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/storageClassName
+        value: lvms-vg1
+    target:
+      kind: PersistentVolumeClaim
+      name: etbit-ghost-content
