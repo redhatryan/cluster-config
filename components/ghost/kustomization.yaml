@@ -2,3 +2,4 @@ resources:
 - ghost-deployment.yaml
 - ghost-pvc.yaml
 - ghost-svc.yaml
+- ghost-ingress-cert-manager.yaml
