@@ -22,7 +22,7 @@ spec:
         - containerPort: 2368
         env:
         - name: url
-          value: http://blog.apps.lab.etbit.io
+          value: https://blog.apps.lab.etbit.io
         volumeMounts:
         - mountPath: /var/lib/ghost/content
           name: content
