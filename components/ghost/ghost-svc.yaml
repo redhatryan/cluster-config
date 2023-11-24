@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: ghost-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
+  ports:
+    - port: 2368
+      targetPort: http
+      protocol: TCP
+      name: http
   selector:
     app: etbit-ghost
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 2368
