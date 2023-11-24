@@ -1,4 +1,4 @@
 resources:
 - ghost-deployment.yaml
 - ghost-pvc.yaml
-- ghost-svc.yaml
+#- ghost-svc.yaml
