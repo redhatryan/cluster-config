@@ -182,11 +182,11 @@ applications:
     source:
       path: components/clean-completed-pods/base
 
-  ghost:
-    annotations:
-      argocd.argoproj.io/sync-wave: '99'
-    source:
-      path: clusters/overlays/local.lab/components/ghost
+  #ghost:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '99'
+  #  source:
+  #    path: clusters/overlays/local.lab/components/ghost
 
   acs:
     annotations:
