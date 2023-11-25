@@ -28,7 +28,7 @@ stringData:
           "user": "mysql-db-user",
           "password": "gh0st",
           "database": "ghost-db",
-          "port": "3306"
+          "port": "3306",
           "filename": "/var/lib/ghost/content/data/ghost.db"
         }
         "useNullAsDefault": true"
