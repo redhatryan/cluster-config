@@ -6,7 +6,7 @@ metadata:
   name: ghost
   namespace: ghost
   labels:
-    app: etbit-ghost
+    app: ghost
 spec:
   rules:
     - host: "blog.apps.lab.etbit.io"
