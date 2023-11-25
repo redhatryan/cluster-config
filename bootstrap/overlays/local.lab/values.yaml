@@ -188,6 +188,12 @@ applications:
   #  source:
   #    path: clusters/overlays/local.lab/components/ghost
 
+ ghost:
+    annotations:
+      argocd.argoproj.io/sync-wave: '99'
+    source:
+      path: components/ghost-on-openshift/deploy
+
   acs:
     annotations:
       argocd.argoproj.io/sync-wave: '21'
