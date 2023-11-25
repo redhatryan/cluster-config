@@ -32,33 +32,6 @@ spec:
             - name: http
               containerPort: 2368
               protocol: TCP
-          # readinessProbe:
-          #   initialDelaySeconds: 60
-          #   periodSeconds: 30
-          #   timeoutSeconds: 3
-          #   successThreshold: 1
-          #   failureThreshold: 3
-          #   httpGet:
-          #     path: /ghost/api/v4/admin/site/
-          #     port: ghk3s
-          #     httpHeaders:
-          #     - name: X-Forwarded-Proto
-          #       value: https
-          #     - name: Host
-          #       value: tests.yourdomain.com
-          #livenessProbe:                        
-          #  httpGet:
-          #    path: /ghost/api/v4/admin/site/
-          #    port: ghk3s
-          #    httpHeaders:
-          #   - name: X-Forwarded-Proto
-          #      value: https
-          #    - name: Host
-          #      value: tests.yourdomain.com
-          #  periodSeconds: 3600
-          #  timeoutSeconds: 3
-          #  successThreshold: 1
-          #  failureThreshold: 2
           env:
             - name: NODE_ENV
               value: production
@@ -90,24 +63,13 @@ spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      # Optional: Uncomment the following to specify node selectors
-      # affinity:
-      #   nodeAffinity:
-      #     requiredDuringSchedulingIgnoredDuringExecution:
-      #       nodeSelectorTerms:
-      #         - matchExpressions:
-      #             - key: static
-      #               operator: In
-      #               values:
-      #                 - "true"
       securityContext: privileged
       schedulerName: default-scheduler
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
-      maxSurge: 3
-      
+      maxSurge: 3     
   revisionHistoryLimit: 3
   progressDeadlineSeconds: 600
 
