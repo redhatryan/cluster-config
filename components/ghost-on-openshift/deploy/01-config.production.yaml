@@ -21,7 +21,7 @@ stringData:
         ]
       },
       "database": {
-        "client": "mysql",
+        "client": "sqlite3",
         "connection": 
         {
           "host": "mysql-ghost",
@@ -29,7 +29,10 @@ stringData:
           "password": "gh0st",
           "database": "ghost-db",
           "port": "3306"
+          "filename": "content/data/ghost.db"
         }
+        "useNullAsDefault": true"
+        "debug": "false"
       },
       "debug": true,
       "process": "local",
@@ -37,4 +40,3 @@ stringData:
         "contentPath": "/var/lib/ghost/content"
       }
     }
-    
