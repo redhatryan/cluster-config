@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ghost-config-prod
+  namespace: ghost
+type: Opaque
+stringData:
+  config.production.json: |
+    {
+      "url": "https://blog.apps.lab.etbit.io",
+      "admin": {
+        "url": "https://blog.apps.lab.etbit.io"
+      },
+      "server": {
+        "port": 2368,
+        "host": "0.0.0.0"
+      },
+      "logging": {
+        "transports": [
+          "stdout"
+        ]
+      },
+      "database": {
+        "client": "mysql",
+        "connection": 
+        {
+          "host": "mysql-ghost",
+          "user": "mysql-db-user",
+          "password": "gh0st",
+          "database": "ghost-db",
+          "port": "3306"
+        }
+      },
+      "debug": true,
+      "process": "local",
+      "paths": {
+        "contentPath": "/var/lib/ghost/content"
+      }
+    }
+    

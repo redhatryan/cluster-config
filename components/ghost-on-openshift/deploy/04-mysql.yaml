@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql-ghost
+  namespace: ghost
+  labels:
+    app: mysql-ghost
+spec:
+  serviceName: mysql-ghost
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-ghost
+  template:
+    metadata:
+      labels:
+        app: mysql-ghost
+    spec:
+      containers:
+      - name: mysql-ghost
+        securityContext:
+          #   capabilities:
+          #     drop:
+          #       - all
+          #     add:
+          #       - CHOWN
+          #       - DAC_OVERRIDE
+          #       - SETGID
+          #       - SETUID
+          #       - SETPCAP
+          #       - NET_BIND_SERVICE
+          #   readOnlyRootFilesystem: true
+          #   runAsUser: 10001
+          #   runAsGroup: 1001
+          allowPrivilegeEscalation: false
+        image: docker.io/mysql/mysql-server:8.0.32-1.2.11-server
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - secretRef:
+            name: mysql-ghost
+        resources:
+          requests:
+            memory: 256Mi
+            cpu: 500m
+          limits:
+            memory: 1024Mi
+            cpu: 800m
+        ports:
+        - containerPort: 3306
+          protocol: TCP
+          name: mysqlgh
+
+        volumeMounts:
+        - name: mysql-ghost-claim
+          mountPath: /var/lib/mysql
+          readOnly: false
+
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-ghost-claim
+      namespace: ghost
+    spec:
+      accessModes: ["ReadWriteMany"]
+      storageClassName: "lvms-vg1"
+      resources:
+        requests:
+          storage: 2Gi
+
