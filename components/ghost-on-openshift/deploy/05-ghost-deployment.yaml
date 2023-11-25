@@ -63,7 +63,11 @@ spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      securityContext: {}
+      securityContext:
+        readOnlyRootFilesystem: true
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        runAsUser: 1000
       schedulerName: default-scheduler
   strategy:
     type: RollingUpdate
