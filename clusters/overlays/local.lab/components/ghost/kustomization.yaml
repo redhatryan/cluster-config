@@ -3,7 +3,7 @@ kind: Kustomization
 
 helmCharts:
 - name: ghost
-  repo: oci://registry-1.docker.io/bitnamicharts/ghost
+  repo: https://github.com/bitnami/charts/bitnami/ghost
   version: "5.74.3"
   namespace: ghost
   valuesFile: values.yaml
