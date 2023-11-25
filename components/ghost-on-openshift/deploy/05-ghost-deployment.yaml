@@ -55,14 +55,11 @@ spec:
           terminationMessagePath: /var/lib/ghost/content/logs/termination.log
           terminationMessagePolicy: File
           imagePullPolicy: Always
-          securityContext:
-            readOnlyRootFilesystem: true
-            runAsNonRoot: true
-            runAsUser: 1000
+          securityContext: privileged
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      securityContext: {}
+      securityContext: privileged
   strategy:
     type: RollingUpdate
     rollingUpdate:
