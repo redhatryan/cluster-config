@@ -25,7 +25,6 @@ spec:
         - name: tmp
           emptyDir:
             sizeLimit: 128Mi
-
       containers:
         - name: elclaustro
           image: ghcr.io/sredevopsdev/ghost-on-kubernetes:main
@@ -33,7 +32,6 @@ spec:
             - name: http
               containerPort: 2368
               protocol: TCP
-        
           # readinessProbe:
           #   initialDelaySeconds: 60
           #   periodSeconds: 30
@@ -102,9 +100,7 @@ spec:
       #               operator: In
       #               values:
       #                 - "true"
-      
-
-      securityContext: {}
+      securityContext: privileged
       schedulerName: default-scheduler
   strategy:
     type: RollingUpdate
