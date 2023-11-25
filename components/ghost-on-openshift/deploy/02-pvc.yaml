@@ -7,6 +7,7 @@ metadata:
     app: ghost
 spec:
   storageClassName: lvms-vg1 # Change this to your storageClassName
+  volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce # Change this to your accessModes
   resources:
