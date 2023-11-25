@@ -19,19 +19,19 @@ spec:
       containers:
       - name: mysql-ghost
         securityContext:
-             capabilities:
-               drop:
-                 - all
-               add:
-                 - CHOWN
-                 - DAC_OVERRIDE
-                 - SETGID
-                 - SETUID
-                 - SETPCAP
-                 - NET_BIND_SERVICE
-             readOnlyRootFilesystem: true
-             runAsUser: 10001
-             runAsGroup: 1001
+          capabilities:
+            drop:
+              - all
+            add:
+              - CHOWN
+              - DAC_OVERRIDE
+              - SETGID
+              - SETUID
+              - SETPCAP
+              - NET_BIND_SERVICE
+          readOnlyRootFilesystem: true
+          runAsUser: 10001
+          runAsGroup: 1001
           allowPrivilegeEscalation: false
         image: docker.io/mysql/mysql-server:8.0.32-1.2.11-server
         imagePullPolicy: IfNotPresent
@@ -63,4 +63,3 @@ spec:
       resources:
         requests:
           storage: 2Gi
-
