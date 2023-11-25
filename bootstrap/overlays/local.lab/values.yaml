@@ -194,6 +194,13 @@ applications:
   #  source:
   #    path: components/ghost-on-openshift/deploy
 
+  ghost-helm:
+    annotations:
+      argocd.argoproj.io/sync-wave: '99'
+    source:
+      path: clusters/overlays/local.lab/components/ghost
+
+
   acs:
     annotations:
       argocd.argoproj.io/sync-wave: '21'
