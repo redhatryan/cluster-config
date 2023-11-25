@@ -188,7 +188,7 @@ applications:
   #  source:
   #    path: clusters/overlays/local.lab/components/ghost
 
- ghost:
+  ghost:
     annotations:
       argocd.argoproj.io/sync-wave: '99'
     source:
