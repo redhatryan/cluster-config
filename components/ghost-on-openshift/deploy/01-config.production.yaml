@@ -29,7 +29,7 @@ stringData:
           "password": "gh0st",
           "database": "ghost-db",
           "port": "3306"
-          "filename": "content/data/ghost.db"
+          "filename": "/var/lib/ghost/content/data/ghost.db"
         }
         "useNullAsDefault": true"
         "debug": "false"
