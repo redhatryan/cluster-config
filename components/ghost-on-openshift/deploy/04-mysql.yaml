@@ -30,7 +30,7 @@ spec:
               - SETPCAP
               - NET_BIND_SERVICE
           readOnlyRootFilesystem: true
-          runAsUser: 1000800001
+          runAsUser: 1000860001
           runAsGroup: 1001
           allowPrivilegeEscalation: false
         image: docker.io/mysql/mysql-server:8.0.32-1.2.11-server
