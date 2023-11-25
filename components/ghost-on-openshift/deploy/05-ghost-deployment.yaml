@@ -60,11 +60,10 @@ spec:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
             runAsUser: 1000
-            privileged: true
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
-      securityContext: privileged
+      securityContext: {}
       schedulerName: default-scheduler
   strategy:
     type: RollingUpdate
