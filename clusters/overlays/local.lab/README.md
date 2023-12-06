@@ -6,4 +6,4 @@ The control plane is an Intel 2023 NUC 13 Pro, 13th Gen 12-Core i7-1360P up to 5
 
 The additional worker node is an Intel 2022 NUC 12 Pro, 12th Gen 12-Core i5-1240P up to 4.4GHz, 48GB DDR4 RAM, and 500GB PCIe SSD. There is an additional 1TB of storage.
 
-Aggregate compute is 32 vCPU with 94GB memory.
+Aggregate compute is 32 vCPU with 96GB memory.
