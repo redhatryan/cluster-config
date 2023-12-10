@@ -345,3 +345,8 @@ applications:
   #      duration: 5s
   #      factor: 2
   #      maxDuration: 3m
+
+  nmstate:
+    enabled: true
+    source:
+      path: clusters/overlays/local.lab/components/nmstate
