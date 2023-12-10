@@ -7,7 +7,7 @@ patches:
   - patch: |-
       - op: replace
         path: /spec/channel
-        value: "4.13"
+        value: "stable"
     target:
       kind: Subscription
       name: kubernetes-nmstate-operator
