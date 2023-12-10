@@ -6,7 +6,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   nodeSelector:
-    node-role.kubernetes.io/worker: ""
+    kubernetes.io/hostname: "lab-worker"
   desiredState:
     interfaces:
       - name: brint
