@@ -20,7 +20,7 @@ spec:
             stp:
               enabled: false
           port:
-            - name: enp86s0
+            - name: enp0s20f0u2
 
     # interfaces:
     #   - name: bond0
