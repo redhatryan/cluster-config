@@ -1,7 +1,7 @@
 resources:
 - github.com/redhat-cop/gitops-catalog/nmstate/operator
 - github.com/redhat-cop/gitops-catalog/nmstate/instance
-#- node-network-configuration-policy.yaml
+- node-network-configuration-policy.yaml
 
 patches:
   - patch: |-
