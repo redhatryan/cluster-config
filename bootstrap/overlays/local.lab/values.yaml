@@ -32,13 +32,13 @@ applications:
   #  source:
   #    path: clusters/overlays/local.lab/components/local-storage
 
-  #gitops-node-labeler:
-  #  annotations:
-  #    argocd.argoproj.io/sync-wave: '4'
-  #  destination:
-  #    namespace: openshift-gitops
-  #  source:
-  #    path: clusters/overlays/local.lab/components/openshift-gitops
+   gitops-node-labeler:
+     annotations:
+        argocd.argoproj.io/sync-wave: '4'
+     destination:
+       namespace: openshift-gitops
+     source:
+       path: clusters/overlays/local.lab/components/openshift-gitops
   
   pipeline-operator:
       annotations:
