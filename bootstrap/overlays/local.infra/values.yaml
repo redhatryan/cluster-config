@@ -1,0 +1,82 @@
+default:
+  app:
+    enabled: true
+    enableAutoSync: true
+    autoSyncPrune: false
+    project: cluster-config
+    labels:
+     app-source: local.infra
+     repo: cluster-config
+    destination:
+      namespace: openshift-gitops
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/redhatryan/cluster-config.git
+      targetRevision: HEAD
+
+applications:
+
+  authentication:
+    annotations:
+      argocd.argoproj.io/sync-wave: '4'
+    destination:
+      namespace: openshift-config
+    source:
+      path: components/oauth/overlays/homelab
+
+  rbac:
+    annotations:
+      argocd.argoproj.io/compare-options: IgnoreExtraneous
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/rbac/overlays
+
+  web-terminal:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destination:
+      namespace: openshift-operators
+    source:
+      path: components/web-terminal-operator/base
+
+  defrag-etcd:
+    annotations:
+      argocd.argoproj.io/sync-wave: '99'
+    destination:
+      namespace: openshift-etcd
+    source:
+      path: components/defrag-etcd/base
+
+  cleanup-completed-pods:
+    annotations:
+      argocd.argoproj.io/sync-wave: '99'
+    destination:
+      namespace: clean-completed-pods
+    source:
+      path: components/clean-completed-pods/base
+
+  banner:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: clusters/overlays/local.lab/components/banner
+
+  homepage:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/homepage/
+
+  console-links:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: clusters/overlays/local.infra/components/consolelinks
+
+  certificates:
+    annotations:
+      argocd.argoproj.io/sync-wave: "3"
+    destination:
+      namespace: cert-manager-operator
+    source:
+      path: clusters/overlays/local.infra/components/certificates

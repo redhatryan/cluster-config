@@ -40,7 +40,7 @@ applications:
     destination:
       namespace: openshift-storage
     source:
-      path: clusters/overlays/local.lab/components/lvm-operator
+      path: components/lvm-operator/base
 
   authentication:
     annotations:
