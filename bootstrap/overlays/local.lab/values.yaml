@@ -32,22 +32,39 @@ applications:
   #  source:
   #    path: clusters/overlays/local.lab/components/local-storage
 
-   gitops-node-labeler:
-      annotations:
-         argocd.argoproj.io/sync-wave: '4'
+  gitops-node-labeler:
+     annotations:
+       argocd.argoproj.io/sync-wave: '4'
       destination:
         namespace: openshift-gitops
       source:
         path: clusters/overlays/local.lab/components/openshift-gitops
   
-   pipeline-operator:
-      annotations:
-        argocd.argoproj.io/sync-wave: "21"
-        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-      destination:
-        namespace: openshift-operators
-      source:
-        path: components/openshift-pipeline-operator/overlays/stable
+  pipeline-operator:
+     annotations:
+       argocd.argoproj.io/sync-wave: "21"
+       argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+     destination:
+       namespace: openshift-operators
+     source:
+       path: components/openshift-pipeline-operator/overlays/stable
+
+  acs:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destination:
+      namespace: stackrox
+    source:
+      path: clusters/overlays/local.lab/components/acs-operator
+
+  #acs-secured-cluster:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: rhacs-operator
+  #  source:
+  #    path: components/acs-operator/overlays/secured-cluster
+
 
   #alertmanager:
   #  annotations:
@@ -115,22 +132,6 @@ applications:
   #    argocd.argoproj.io/sync-wave: '99'
   #  source:
   #    path: clusters/overlays/local.lab/components/ghost
-
-  acs:
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: stackrox
-    source:
-      path: clusters/overlays/local.lab/components/acs-operator
-
-  #acs-secured-cluster:
-  #  annotations:
-  #    argocd.argoproj.io/sync-wave: '21'
-  #  destination:
-  #    namespace: rhacs-operator
-  #  source:
-  #    path: components/acs-operator/overlays/secured-cluster
 
   #odf-instance:
   #  annotations:
