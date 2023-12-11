@@ -38,7 +38,7 @@ applications:
     destination:
       namespace: openshift-gitops
     source:
-      path: clusters/overlays/local.lab/components/openshift-gitops
+       path: clusters/overlays/local.lab/components/openshift-gitops
   
   pipeline-operator:
     annotations:
@@ -46,7 +46,7 @@ applications:
        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
      destination:
        namespace: openshift-operators
-     source:  
+     source:  components/openshift-pipeline-operator/overlays/stable
 
   acs:
     annotations:
