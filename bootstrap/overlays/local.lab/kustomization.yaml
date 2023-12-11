@@ -10,4 +10,4 @@ helmCharts:
 #  releaseName: argocd-app-of-app-0.1.0
 
 resources:
-- ../../base
+- ../local

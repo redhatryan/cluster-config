@@ -16,35 +16,6 @@ default:
 
 applications:
 
-  odf-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: '1'
-    source:
-      path: components/odf-operator/operator/overlays/no-registry
-
-  # Add DNS via secret at some point or find another solution
-  #dns:
-  #  annotations:
-  #    argocd.argoproj.io/sync-wave: '1'  
-  #  source:
-  #    path: components/dns/
-
-  cert-manager-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: "2"
-    destination:
-      namespace: cert-manager-operator
-    source:
-      path: components/cert-manager-operator/aggregate/overlays/letsencrypt
-
-  lvm-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: '2'
-    destination:
-      namespace: openshift-storage
-    source:
-      path: clusters/overlays/local.lab/components/lvm-operator
-  
   #local-storage-operator:
   #  annotations:
   #    argocd.argoproj.io/sync-wave: '2'
@@ -61,14 +32,6 @@ applications:
   #  source:
   #    path: clusters/overlays/local.lab/components/local-storage
 
-  authentication:
-    annotations:
-      argocd.argoproj.io/sync-wave: '4'
-    destination:
-      namespace: openshift-config
-    source:
-      path: components/oauth/overlays/homelab
-
   gitops-node-labeler:
     annotations:
       argocd.argoproj.io/sync-wave: '4'
@@ -77,14 +40,6 @@ applications:
     source:
       path: clusters/overlays/local.lab/components/openshift-gitops
   
-  registry:
-    annotations:
-      argocd.argoproj.io/sync-wave: '5'
-    destination:
-      namespace: openshift-image-registry
-    source:
-      path: clusters/overlays/local.lab/components/registry
-
   pipeline-operator:
       annotations:
         argocd.argoproj.io/sync-wave: "21"
@@ -101,13 +56,6 @@ applications:
   #    namespace: openshift-monitoring
   #  source:
   #    path: components/alertmanager/base
-
-  rbac:
-    annotations:
-      argocd.argoproj.io/compare-options: IgnoreExtraneous
-      argocd.argoproj.io/sync-wave: '11'
-    source:
-      path: components/rbac/overlays
 
   #sso:
   #  annotations:
@@ -142,14 +90,6 @@ applications:
    #      jsonPointers:
    #       - /spec/rules
 
-  web-terminal:
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: openshift-operators
-    source:
-      path: components/web-terminal-operator/base
-
   compliance-operator:
     annotations:
       argocd.argoproj.io/sync-wave: '11'
@@ -165,22 +105,6 @@ applications:
   #    namespace: openshift-operators
   #  source:
   #    path: components/openshift-api-for-data-protection-operator/overlays/stable
-
-  defrag-etcd:
-    annotations:
-      argocd.argoproj.io/sync-wave: '99'
-    destination:
-      namespace: openshift-etcd
-    source:
-      path: components/defrag-etcd/base
-
-  cleanup-completed-pods:
-    annotations:
-      argocd.argoproj.io/sync-wave: '99'
-    destination:
-      namespace: clean-completed-pods
-    source:
-      path: components/clean-completed-pods/base
 
   #ghost:
   #  annotations:
@@ -296,12 +220,6 @@ applications:
     source:
       path: clusters/overlays/local.lab/components/banner
 
-  homepage:
-    annotations:
-      argocd.argoproj.io/sync-wave: '11'
-    source:
-      path: components/homepage/
-
   console-links:
     annotations:
       argocd.argoproj.io/sync-wave: '11'
@@ -346,7 +264,7 @@ applications:
   #      factor: 2
   #      maxDuration: 3m
 
-  nmstate:
-    enabled: true
-    source:
-      path: clusters/overlays/local.lab/components/nmstate
+  #nmstate:
+  #  enabled: true
+  #  source:
+  #    path: clusters/overlays/local.lab/components/nmstate
