@@ -32,7 +32,7 @@ applications:
   #  source:
   #    path: clusters/overlays/local.lab/components/local-storage
 
-  gitops-node-labeler:
+   gitops-node-labeler:
       annotations:
          argocd.argoproj.io/sync-wave: '4'
       destination:
@@ -89,14 +89,6 @@ applications:
    #       kind: Policy
    #      jsonPointers:
    #       - /spec/rules
-
-  compliance-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: '11'
-    destination:
-      namespace: openshift-operators
-    source:
-      path: components/compliance-operator/aggregate/scheduled
 
   #oadp-operator:
   #  annotations:
