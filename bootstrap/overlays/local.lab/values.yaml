@@ -46,7 +46,8 @@ applications:
        argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
      destination:
        namespace: openshift-operators
-     source:  components/openshift-pipeline-operator/overlays/stable
+     source:  
+       path: components/openshift-pipeline-operator/overlays/stable
 
   acs:
     annotations:
