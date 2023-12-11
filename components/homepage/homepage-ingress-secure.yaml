@@ -14,7 +14,7 @@ metadata:
     route.openshift.io/termination: "reencrypt"
 spec:
   rules:
-    - host: "homepage.apps.lab.etbit.io"
+    - host: "homepage.apps.infra.etbit.io"
       http:
         paths:
         - path: "/"
@@ -26,5 +26,5 @@ spec:
                 number: 443
   tls:
     - hosts:
-        - "homepage.apps.lab.etbit.io"
+        - "homepage.apps.infra.etbit.io"
       secretName: "openshift-wildcard"
