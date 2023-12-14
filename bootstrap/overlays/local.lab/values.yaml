@@ -56,6 +56,12 @@ applications:
       namespace: stackrox
     source:
       path: clusters/overlays/local.lab/components/acs-operator
+  
+  homepage:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: components/homepage/
 
   #acs-secured-cluster:
   #  annotations:
