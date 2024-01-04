@@ -10,7 +10,7 @@ data:
     mode: cluster
   settings.yaml: |
     title: Etbit Homelab
-    background: https://images.unsplash.com/photo-1701703995100-cf8f31378968?q=80&w=5244&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+    background: https://images.unsplash.com/photo-1704140159556-88e2e6177def?q=80&w=5232&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
     headerStyle: boxed
   #settings.yaml: |
   #  providers:
