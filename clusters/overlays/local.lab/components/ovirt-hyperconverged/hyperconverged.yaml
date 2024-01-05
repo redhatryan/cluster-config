@@ -31,7 +31,6 @@ spec:
     server:
       duration: 24h0m0s
       renewBefore: 12h0m0s
-  infra: {}
   evictionStrategy: None
   featureGates:
     deployTektonTaskResources: false
