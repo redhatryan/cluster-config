@@ -47,7 +47,7 @@ applications:
     destination:
       namespace: openshift-operators
     source:  
-      path: components/openshift-pipeline-operator/overlays/stable
+      path: components/openshift-pipelines-operator/overlays/latest
 
   acs:
     annotations:
@@ -240,12 +240,6 @@ applications:
       argocd.argoproj.io/sync-wave: '11'
     source:
       path: clusters/overlays/local.lab/components/banner
-
-  openshift-pipelines:
-    annotations:
-      argocd.argoproj.io/sync-wave: '11'
-    source:
-      path: components/openshift-pipelines-operator/overlays/latest
 
   console-links:
     annotations:
