@@ -79,6 +79,12 @@ applications:
     source:
       path: components/homepage/
 
+  RHOAI:
+    annotations:
+      argocd.argoproj.io/sync-wave: '31'
+    source:
+      path: components/rhods-operator/operator/overlays/stable
+
   #acs-secured-cluster:
   #  annotations:
   #    argocd.argoproj.io/sync-wave: '21'
