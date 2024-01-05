@@ -79,7 +79,7 @@ applications:
     source:
       path: components/homepage/
 
-  RHOAI:
+  openshift-ai:
     annotations:
       argocd.argoproj.io/sync-wave: '31'
     source:
