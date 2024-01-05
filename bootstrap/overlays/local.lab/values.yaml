@@ -56,6 +56,14 @@ applications:
       namespace: stackrox
     source:
       path: clusters/overlays/local.lab/components/acs-operator
+
+  openshift-virtualization:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destination:
+      namespace: openshift-cnv
+    source:
+      path: components/virtualization-operator/base
   
   homepage:
     annotations:
