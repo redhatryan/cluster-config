@@ -1,0 +1,46 @@
+apiVersion: hco.kubevirt.io/v1beta1
+kind: HyperConverged
+metadata:
+  annotations:
+    deployOVS: 'false'
+  name: kubevirt-hyperconverged
+  labels:
+    app: kubevirt-hyperconverged
+spec:
+  virtualMachineOptions:
+    disableFreePageReporting: true
+  liveMigrationConfig:
+    allowAutoConverge: false
+    allowPostCopy: false
+    completionTimeoutPerGiB: 800
+    parallelMigrationsPerCluster: 5
+    parallelOutboundMigrationsPerNode: 2
+    progressTimeout: 150
+  certConfig:
+    ca:
+      duration: 48h0m0s
+      renewBefore: 24h0m0s
+    server:
+      duration: 24h0m0s
+      renewBefore: 12h0m0s
+  infra: {}
+  evictionStrategy: None
+  featureGates:
+    deployTektonTaskResources: false
+    enableCommonBootImageImport: true
+    withHostPassthroughCPU: false
+    disableMDevConfiguration: false
+    deployKubeSecondaryDNS: false
+    nonRoot: true
+    enableManagedTenantQuota: false
+    deployVmConsoleProxy: false
+    persistentReservation: false
+  workloadUpdateStrategy:
+    batchEvictionInterval: 1m0s
+    batchEvictionSize: 10
+    workloadUpdateMethods:
+      - LiveMigrate
+  uninstallStrategy: BlockUninstallIfWorkloadsExist
+  workloads: {}
+  resourceRequirements:
+    vmiCPUAllocationRatio: 10

@@ -64,6 +64,14 @@ applications:
       namespace: openshift-cnv
     source:
       path: components/virtualization-operator/base
+
+  openshift-virtualization-hyperconverged:
+    annotations:
+      argocd.argoproj.io/sync-wave: '51'
+    destination:
+      namespace: openshift-cnv
+    source:
+      path: clusters/overlays/local.lab/components/ovirt-hyperconverged
   
   homepage:
     annotations:
