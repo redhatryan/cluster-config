@@ -7,5 +7,5 @@ commonAnnotations:
 resources:
 - cert-manager-ns.yaml
 - letsencrypt-external-aws.yaml
-- letsencrypt-staging-cluster-issuer.yaml
+#- letsencrypt-staging-cluster-issuer.yaml
 - letsencrypt-prod-cluster-issuer.yaml
