@@ -7,7 +7,7 @@ spec:
   # Replace default secret since ACS doesn't support referencing a different secret
   secretName: central-default-tls-cert
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt-staging
     kind: ClusterIssuer
   dnsNames:
   - central-stackrox.apps.lab.etbit.io
