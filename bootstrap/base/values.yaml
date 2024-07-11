@@ -25,6 +25,9 @@ projects:
     - https://github.com/redhatryan/acm-hub-bootstrap
     - https://github.com/redhatryan/acs-hub-bootstrap
     - https://github.com/redhatryan/acs-devsecops
+    - https://github.com/redhatryan/podman-actions
+    - https://github.com/redhatryan/podman-ansible
+    - https://github.com/redhatryan/personal-project
     destinations: |
       - namespace: '*'
         server: https://kubernetes.default.svc
