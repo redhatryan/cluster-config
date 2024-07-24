@@ -5,4 +5,4 @@ resources:
 - ../../../../../components/loki/operator/cluster-logging/base
 - ../../../../../components/loki/operator/loki/base
 - ../../../../../components/loki/instance/overlays/sno
-- loki-storage-qnap-secret.yaml
+#- loki-storage-qnap-secret.yaml
