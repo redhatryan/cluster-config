@@ -40,22 +40,22 @@ applications:
     source:
        path: clusters/overlays/local.lab/components/openshift-gitops
   
-  pipeline-operator:
-    annotations:
-      argocd.argoproj.io/sync-wave: "21"
-      argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-    destination:
-      namespace: openshift-operators
-    source:  
-      path: components/openshift-pipelines-operator/overlays/latest
+  #pipeline-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: "21"
+  #    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  #  destination:
+  #    namespace: openshift-operators
+  #  source:  
+  #    path: components/openshift-pipelines-operator/overlays/latest
 
-  acs:
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: stackrox
-    source:
-      path: clusters/overlays/local.lab/components/acs-operator
+#  acs:
+#    annotations:
+#      argocd.argoproj.io/sync-wave: '21'
+#    destination:
+#      namespace: stackrox
+#    source:
+#      path: clusters/overlays/local.lab/components/acs-operator
 
   openshift-virtualization:
     annotations:
@@ -79,11 +79,11 @@ applications:
     source:
       path: components/homepage/
 
-  openshift-ai:
-    annotations:
-      argocd.argoproj.io/sync-wave: '31'
-    source:
-      path: components/rhods-operator/operator/overlays/stable
+#  openshift-ai:
+#    annotations:
+#      argocd.argoproj.io/sync-wave: '31'
+#    source:
+#      path: components/rhods-operator/operator/overlays/stable
 
   #acs-secured-cluster:
   #  annotations:
