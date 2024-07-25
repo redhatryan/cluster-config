@@ -161,13 +161,13 @@ applications:
   #  source:
   #    path: clusters/overlays/local.lab/components/ghost
 
-  odf-instance:
-    annotations:
-      argocd.argoproj.io/sync-wave: '4'
-    destination:
-      namespace: openshift-storage
-    source:
-      path: clusters/overlays/local.lab/components/odf
+ # odf-instance:
+ #   annotations:
+ #     argocd.argoproj.io/sync-wave: '4'
+ #   destination:
+ #     namespace: openshift-storage
+ #   source:
+ #     path: clusters/overlays/local.lab/components/odf
 
   acm-hub:
     annotations:
@@ -272,18 +272,18 @@ applications:
     #source:
     #  path: clusters/overlays/local.hub/components/quay-registry-operator
 
-  lokistack:
-    enabled: true
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    source:
-      path: clusters/overlays/local.lab/components/lokistack
-    syncPolicyRetry:
-      limit: 5
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
+  #lokistack:
+  #  enabled: true
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  source:
+  #    path: clusters/overlays/local.lab/components/lokistack
+  #  syncPolicyRetry:
+  #    limit: 5
+  #    backoff:
+  #      duration: 5s
+  #      factor: 2
+  #      maxDuration: 3m
 
   #nmstate:
   #  enabled: true
