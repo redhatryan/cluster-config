@@ -6,8 +6,8 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '0'
 spec:
-  duration: 2160h # 90 days
-  renewBefore: 360h # 15 days
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
   secretName: openshift-wildcard-certificate
   issuerRef:
     name: letsencrypt-staging
