@@ -11,5 +11,5 @@ spec:
   operatorLogLevel: Normal
   controllerConfig:
     overrideArgs:
-      - '--dns01-recursive-nameservers-only'
+      - '--dns01-recursive-nameservers-only=true'
       - '--dns01-recursive-nameservers=1.1.1.1:53'
