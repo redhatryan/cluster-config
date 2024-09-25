@@ -49,13 +49,13 @@ applications:
   #  source:  
   #    path: components/openshift-pipelines-operator/overlays/latest
 
-  acs:
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: stackrox
-    source:
-      path: clusters/overlays/local.lab/components/acs-operator
+  #acs:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: stackrox
+  #  source:
+  #    path: clusters/overlays/local.lab/components/acs-operator
 
   openshift-virtualization:
     annotations:
@@ -73,11 +73,11 @@ applications:
     source:
      path: clusters/overlays/local.lab/components/ovirt-hyperconverged
   
-  homepage:
-    annotations:
-      argocd.argoproj.io/sync-wave: '11'
-    source:
-      path: components/homepage/
+#  homepage:
+#    annotations:
+#      argocd.argoproj.io/sync-wave: '11'
+#    source:
+#      path: components/homepage/
 
 #  openshift-ai:
 #    annotations:
@@ -85,14 +85,13 @@ applications:
 #    source:
 #      path: components/rhods-operator/operator/overlays/stable
 
-  acs-secured-cluster:
-    annotations:
-      argocd.argoproj.io/sync-wave: '21'
-    destination:
-      namespace: rhacs-operator
-    source:
-      path: components/acs-operator/overlays/secured-cluster
-
+#  acs-secured-cluster:
+#    annotations:
+#      argocd.argoproj.io/sync-wave: '21'
+#    destination:
+#      namespace: rhacs-operator
+#    source:
+#      path: components/acs-operator/overlays/secured-cluster
 
   #alertmanager:
   #  annotations:
