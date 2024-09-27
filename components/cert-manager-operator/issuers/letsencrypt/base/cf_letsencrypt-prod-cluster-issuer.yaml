@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: ryan@etbitconsulting.com
+    # This key doesn't exist, cert-manager creates it
+    privateKeySecretRef:
+      name: retten-redhat-issuer-account-key
+    solvers:
+    - selector:
+        dnsZones:
+          - "etbit.io"
+      dns01:
+       cloudflare:
+          email: ryan@etbitconsulting.com
+          apiKeySecretRef:
+            name: letsencrypt-cloudflare
+            key: secret-access-key
