@@ -10,7 +10,7 @@ spec:
   renewBefore: 360h # 15days
   secretName: openshift-wildcard-certificate
   issuerRef:
-    name: letsencrypt-prod
+    name: letsencrypt-staging
     kind: ClusterIssuer
   commonName: '*.apps.replace.me'
   dnsNames:
