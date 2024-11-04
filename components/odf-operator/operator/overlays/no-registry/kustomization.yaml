@@ -1,5 +1,5 @@
 resources:
-- ../../../../openshift-data-foundation-operator/operator/overlays/stable-4.16
+- ../../../../openshift-data-foundation-operator/operator/overlays/stable-4.17
 
 patches:
   - patch: |-
