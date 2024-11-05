@@ -1,0 +1,5 @@
+resources:
+- local-volume-discovery.yaml
+#- local-volume.yaml
+- local-volume-set.yaml
+

@@ -1,0 +1,4 @@
+resources:
+- compliance/base
+- gatekeeper
+- opa

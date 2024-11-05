@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Review this article for a path forward: https://developers.redhat.com/articles/2023/05/25/3-patterns-deploying-helm-charts-argocd#helping_you_choose_a_pattern_for_helm_chart_deployment
+# Chart from: https://github.com/bitnami/charts/tree/main/bitnami/ghost
+
+helmCharts:
+- name: ghost
+  repo: https://github.com/bitnami/charts/bitnami/ghost
+  version: "5.74.3"
+  namespace: ghost
+  valuesFile: values.yaml

@@ -1,0 +1,31 @@
+resources:
+- ../../../../../components/certificates/base
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/servingCerts/namedCertificates/0/names/0
+        value: api.sven.etbit.io
+    target:
+      group: config.openshift.io
+      kind: APIServer
+      name: cluster
+  - patch: |-
+      - op: replace
+        path: /spec/dnsNames
+        value:
+          - api.sven.etbit.io
+    target:
+      kind: Certificate
+      name: openshift-api
+  - patch: |-
+      - op: replace
+        path: /spec/dnsNames
+        value:
+          - '*.apps.sven.etbit.io'
+      - op: replace
+        path: /spec/commonName
+        value: '*.apps.sven.etbit.io'
+    target:
+      kind: Certificate
+      name: openshift-wildcard

@@ -1,0 +1,20 @@
+apiVersion: local.storage.openshift.io/v1alpha1
+kind: LocalVolumeSet
+metadata:
+  name: autodetect-local
+  namespace: openshift-local-storage
+spec:
+  nodeSelector:
+    nodeSelectorTerms:
+      - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+              - olaf
+  storageClassName: lso-vg1
+  volumeMode: Filesystem
+  fsType: xfs
+  deviceInclusionSpec:
+    deviceTypes:
+      - disk
+    minSize: 100G

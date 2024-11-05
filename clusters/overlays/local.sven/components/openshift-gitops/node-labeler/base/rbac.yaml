@@ -1,0 +1,33 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: gitops-node-labeler
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
+rules:
+  - apiGroups: [""]
+    resources:
+      - nodes
+      - pods
+    verbs:
+      - get
+      - list
+      - patch
+      - label
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: gitops-node-labeler
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/sync-wave: "-5"
+subjects:
+  - kind: ServiceAccount
+    name: gitops-node-labeler
+    namespace: openshift-gitops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitops-node-labeler

@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gitops-label-infra-nodes
+  generateName: gitops-label-infra-nodes-
+spec:
+  template:
+    spec:
+      containers:
+        - name: labeler
+          image: registry.redhat.io/openshift4/ose-cli
+          env:
+            - name: selector
+              value: 'node-role.kubernetes.io/master'
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "Labling the following nodes"
+              oc get nodes --selector=${selector}
+              oc label nodes --selector=${selector} node-role.kubernetes.io/infra= --overwrite=true
+      restartPolicy: Never
+      serviceAccount: gitops-node-labeler
+      serviceAccountName: gitops-node-labeler
+  backoffLimit: 4

@@ -1,0 +1,3 @@
+resources:
+- gatekeeper-probes-livenessnotset.yaml
+- gatekeeper-probes-readinessnotset.yaml

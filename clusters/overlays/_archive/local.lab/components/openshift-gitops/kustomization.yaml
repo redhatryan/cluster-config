@@ -1,0 +1,3 @@
+resources:
+#- node-labeler/overlays/default
+- gitops-service-infra.yaml

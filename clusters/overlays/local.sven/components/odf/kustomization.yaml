@@ -1,0 +1,16 @@
+resources:
+- ../../../../../components/odf-operator/instance/base
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/pvPool/storageClass
+        value: lvms-vg1
+    target:
+      kind: BackingStore
+  - patch: |-
+      - op: replace
+        path: /spec/multiCloudGateway/dbStorageClassName
+        value: lvms-vg1
+    target:
+      kind: StorageCluster

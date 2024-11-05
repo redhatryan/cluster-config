@@ -1,0 +1,12 @@
+resources:
+- ../../../../../components/registry-sno/base
+
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/storageClassName
+        value: lvms-vg1
+    target:
+      kind: PersistentVolumeClaim
+      name: image-registry
+      namespace: openshift-image-registry

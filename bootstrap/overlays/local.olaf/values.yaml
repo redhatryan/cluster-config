@@ -1,0 +1,290 @@
+default:
+  app:
+    enabled: true
+    enableAutoSync: true
+    autoSyncPrune: false
+    project: cluster-config
+    labels:
+     app-source: local.olaf
+     repo: cluster-config
+    destination:
+      namespace: openshift-gitops
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/redhatryan/cluster-config.git
+      targetRevision: HEAD
+
+applications:
+
+  #local-storage-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '2'
+  #  destination:
+  #    namespace: openshift-storage
+  #  source:
+  #    path: components/local-storage/operator/overlays/stable
+
+  #local-storage-instance:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '3'
+  #  destination:
+  #    namespace: openshift-storage
+  #  source:
+  #    path: clusters/overlays/local.olaf/components/local-storage
+
+ #gitops-node-labeler:
+ #   annotations:
+ #     argocd.argoproj.io/sync-wave: '4'
+ #   destination:
+ #     namespace: openshift-gitops
+ #   source:
+ #      path: clusters/overlays/local.olaf/components/openshift-gitops
+  
+  #pipeline-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: "21"
+  #    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  #  destination:
+  #    namespace: openshift-operators
+  #  source:  
+  #    path: components/openshift-pipelines-operator/overlays/latest
+
+  #acs:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: stackrox
+  #  source:
+  #    path: clusters/overlays/local.olaf/components/acs-operator
+
+  #openshift-virtualization:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: openshift-cnv
+  #  source:
+  #    path: components/virtualization-operator/base
+
+#  openshift-virtualization-hyperconverged:
+ #   annotations:
+ #     argocd.argoproj.io/sync-wave: '51'
+ #   destination:
+ #     namespace: openshift-cnv
+ #   source:
+ #     path: clusters/overlays/local.olaf/components/ovirt-hyperconverged
+  
+#  homepage:
+#    annotations:
+#      argocd.argoproj.io/sync-wave: '11'
+#    source:
+#      path: components/homepage/
+
+#  openshift-ai:
+#    annotations:
+#      argocd.argoproj.io/sync-wave: '31'
+#    source:
+#      path: components/rhods-operator/operator/overlays/stable
+
+#  acs-secured-cluster:
+#    annotations:
+#      argocd.argoproj.io/sync-wave: '21'
+#    destination:
+#      namespace: rhacs-operator
+#    source:
+#      path: components/acs-operator/overlays/secured-cluster
+
+  #alertmanager:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  destination:
+  #    namespace: openshift-monitoring
+  #  source:
+  #    path: components/alertmanager/base
+
+  #sso:
+  #  annotations:
+  #    argocd.argoproj.io/compare-options: IgnoreExtraneous
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  source:
+  #    path: components/sso/overlays/default
+
+   #kyverno:
+   # enabled: false
+   # annotations:
+   #   argocd.argoproj.io/compare-options: IgnoreExtraneous
+   #   argocd.argoproj.io/sync-wave: '21'
+   # destination:
+   #   namespace: kyverno
+   # source:
+   #   path: components/kyverno/overlays/policies
+   # syncPolicyRetry:
+   #   limit: 5
+   #   backoff:
+   #     duration: 5s
+   #     factor: 2
+   #     maxDuration: 3m
+   # extraFields: |
+   #   ignoreDifferences:
+   #     - group: kyverno.io
+   #       kind: ClusterPolicy
+   #       jsonPointers:
+   #       - /spec/rules
+   #     - group: kyverno.io
+   #       kind: Policy
+   #      jsonPointers:
+   #       - /spec/rules
+
+  #oadp-operator:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  destination:
+  #    namespace: openshift-operators
+  #  source:
+  #    path: components/openshift-api-for-data-protection-operator/overlays/stable
+
+  #ghost:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '99'
+  #  source:
+  #    path: clusters/overlays/local.olaf/components/ghost
+
+  #ghost-on-openshift:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '99'
+  #  source:
+  #    path: components/ghost-on-openshift/deploy
+
+  #ghost-helm:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '99'
+  #  source:
+  #    path: clusters/overlays/local.olaf/components/ghost
+
+  #odf-instance:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '4'
+  #  destination:
+  #    namespace: openshift-storage
+  #  source:
+  #    path: clusters/overlays/local.lab/components/odf
+
+  acm-hub:
+    annotations:
+      argocd.argoproj.io/sync-wave: '21'
+    destinations:
+      namespace: open-cluster-management
+    source:
+      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+      path: components/apps/acm/overlays/hub
+
+  #acm-observability:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '31'
+  #  labels:
+  #    repo: acm-hub-bootstrap
+  #  destinations:
+  #    namespace: open-cluster-management-observability
+  #  source:
+  #    repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+  #    path: components/apps/acm/overlays/observability
+
+  #acm-clusters:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '31'
+  #  labels:
+  #    repo: ignore
+  #  destinations:
+  #    namespace: openshift-gitops
+  #  source:
+  #    repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+  #    path: components/clusters/base
+  #    # Always use latest so we can can set gitops-revision for commit pinnning,
+  #    # otherwise it's chicken and egg problem.
+  #    targetRevision: HEAD
+
+  acm-policies:
+    annotations:
+      argocd.argoproj.io/sync-wave: '31'
+    destinations:
+      namespace: acm-policies
+    source:
+      repoURL: https://github.com/redhatryan/acm-hub-bootstrap.git
+      path: bootstrap/policies/overlays/default
+
+  #acm-day2-policies:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '41'
+  #  source:
+  #    path: clusters/overlays/local.olaf/components/acm-policies
+
+  #gatekeeper:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '11'
+  #  destination:
+  #    namespace: openshift-operators
+  #  source:
+  #    path: components/gatekeeper-operator/overlays/upstream 
+
+  #adguard-home:
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '31'
+  #  destinations:
+  #    namespace: acm-policies
+  #  source:
+  #    repoURL: https://github.com/redhatryan/cluster-config.git
+  #    path: clusters/overlays/local.olaf/components/adguard-home
+
+  banner:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: clusters/overlays/local.olaf/components/banner
+
+  console-links:
+    annotations:
+      argocd.argoproj.io/sync-wave: '11'
+    source:
+      path: clusters/overlays/local.olaf/components/consolelinks
+
+  certificates:
+    annotations:
+      argocd.argoproj.io/sync-wave: "3"
+    destination:
+      namespace: cert-manager-operator
+    source:
+      path: clusters/overlays/local.olaf/components/certificates
+  
+ # openshift-monitoring:
+ #   annotations:
+ #     argocd.argoproj.io/compare-options: IgnoreExtraneous
+ #     argocd.argoproj.io/sync-wave: '11'
+ #   destination:
+ #     namespace: openshift-monitoring
+ #   source:
+ #     path: clusters/overlays/local.lab/components/openshift-monitoring
+
+    #quay-registry:
+    # leave disabled unless needed for demo
+    #enabled: false
+    #annotations:
+    #  argocd.argoproj.io/sync-wave: '21'
+    #source:
+    #  path: clusters/overlays/local.olaf/components/quay-registry-operator
+
+  #lokistack:
+  #  enabled: true
+  #  annotations:
+  #    argocd.argoproj.io/sync-wave: '21'
+  #  source:
+  #    path: clusters/overlays/local.olaf/components/lokistack
+  #  syncPolicyRetry:
+  #    limit: 5
+  #    backoff:
+  #      duration: 5s
+  #      factor: 2
+  #      maxDuration: 3m
+
+  #nmstate:
+  #  enabled: true
+  #  source:
+  #    path: clusters/overlays/local.olaf/components/nmstate
