@@ -160,11 +160,11 @@ applications:
   #  source:
   #    path: clusters/overlays/local.sven/components/ghost
 
- # odf-operator:
- #   annotations:
- #     argocd.argoproj.io/sync-wave: '1'
- #   source:
- #     path: components/odf-operator/operator/overlays/no-registry
+  odf-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: '1'
+    source:
+      path: components/odf-operator/operator/overlays/no-registry
 
   #odf-instance:
   #  annotations:
