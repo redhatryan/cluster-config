@@ -8,7 +8,7 @@ resources:
   - lvmcluster.yaml
   - namespace.yaml
   - operatorgroup.yaml
-  - storageclass.yaml
+ # - storageclass.yaml
 
 patches:
   - patch: |-
