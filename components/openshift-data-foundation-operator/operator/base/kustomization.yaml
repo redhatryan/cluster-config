@@ -12,3 +12,5 @@ resources:
 #  - namespace.yaml
 #  - operator-group.yaml
   - subscription.yaml
+  - ocsinitialization.yaml
+  - storagecluster.yaml
