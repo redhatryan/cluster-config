@@ -6,6 +6,8 @@ namespace: openshift-storage
 resources:
   - subscription.yaml
   - lvmcluster.yaml
+  - namespace.yaml
+  - operatorgroup.yaml
   #- storageclass.yaml
 
 patches:
