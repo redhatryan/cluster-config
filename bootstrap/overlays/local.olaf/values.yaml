@@ -240,11 +240,11 @@ applications:
     source:
       path: clusters/overlays/local.olaf/components/banner
 
-  console-links:
-    annotations:
-      argocd.argoproj.io/sync-wave: '11'
-    source:
-      path: clusters/overlays/local.olaf/components/consolelinks
+ # console-links:
+ #   annotations:
+ #     argocd.argoproj.io/sync-wave: '11'
+ #   source:
+ #     path: clusters/overlays/local.olaf/components/consolelinks
 
   certificates:
     annotations:
