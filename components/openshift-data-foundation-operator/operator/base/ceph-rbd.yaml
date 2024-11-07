@@ -19,4 +19,4 @@ parameters:
   pool: ocs-storagecluster-cephblockpool
 provisioner: openshift-storage.rbd.csi.ceph.com
 reclaimPolicy: Delete
-volumeBindingMode: Immediate
+volumeBindingMode: WaitForFirstConsumer
