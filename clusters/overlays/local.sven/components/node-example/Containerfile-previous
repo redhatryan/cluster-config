@@ -1,0 +1,54 @@
+# Use base image
+FROM artifactproxy01.sutterhealth.org/prod-docker/det/base/node:18-alpine AS base
+
+# Install dependencies only when needed
+# Check https://github.com/nodejs/docker-node/tree/b411f79333ad1b1845ae9c92e6f50a31506c3#nodealpine to understand why libc6-compat might be needed.
+WORKDIR /app
+RUN apk add --no-cache libc6-compat
+
+# Install dependencies based on the preferred package manager
+COPY package.json yarn.lock package-lock.json* pnpm-lock.yaml* ./
+RUN npm ci --loglevel verbose
+
+# Set npm configuration for network performance
+RUN npm config set fetch-retries 5 \
+    && npm config set fetch-retry-factor 10 \
+    && npm config set fetch-retry-mintimeout 20000 \
+    && npm config set fetch-retry-maxtimeout 300000 \
+    && npm config set maxsockets 50
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Uncomment the following line in case you want to disable telemetry during the build.
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN npm run build --verbose
+
+# Production image, copy all the files and run Next.js
+FROM base AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+# Uncomment the following line in case you want to disable telemetry during runtime.
+ENV NEXT_TELEMETRY_DISABLED 1
+
+RUN addgroup --system --gid 1001 nextjs \
+    && adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nextjs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nextjs /app/.next/static ./.next/static
+
+# Set the user for the container
+USER nextjs
+
+# Expose the application port
+EXPOSE 3000
+ENV PORT 3000
+
+# Run the application
+CMD ["node", "server.js"]

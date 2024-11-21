@@ -1,54 +1,62 @@
-# Use base image
-FROM artifactproxy01.sutterhealth.org/prod-docker/det/base/node:18-alpine AS base
+# Stage 1: Base image with Node.js 18 UBI minimal
+FROM registry.access.redhat.com/ubi8/nodejs-18 AS base
 
-# Install dependencies only when needed
-# Check https://github.com/nodejs/docker-node/tree/b411f79333ad1b1845ae9c92e6f50a31506c3#nodealpine to understand why libc6-compat might be needed.
+# Set working directory
 WORKDIR /app
-RUN apk add --no-cache libc6-compat
 
-# Install dependencies based on the preferred package manager
-COPY package.json yarn.lock package-lock.json* pnpm-lock.yaml* ./
+# Copy package manager lock files
+COPY --chown=1001:1001 package.json yarn.lock package-lock.json* pnpm-lock.yaml* ./
+COPY --chown=1001:1001 .nprmc /app/.nprmc
+COPY --chown=1001:1001 .env.production /app/.env.produciton
+
+# Install dependencies
 RUN npm ci --loglevel verbose
 
-# Set npm configuration for network performance
-RUN npm config set fetch-retries 5 \
-    && npm config set fetch-retry-factor 10 \
-    && npm config set fetch-retry-mintimeout 20000 \
-    && npm config set fetch-retry-maxtimeout 300000 \
-    && npm config set maxsockets 50
-
-# Rebuild the source code only when needed
+# Stage 2: Build the application
 FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Uncomment the following line in case you want to disable telemetry during the build.
+# Copy application source code
+COPY --chown=1001:1001 --from=deps /app/node_modules ./node_modules
+COPY --chown=1001:1001 . .
+
+# Disable Next.js telemetry during build
 ENV NEXT_TELEMETRY_DISABLED 1
 
+# Elevate out of root user for npm run
+USER 0
+
+# Build the application
 RUN npm run build --verbose
 
-# Production image, copy all the files and run Next.js
-FROM base AS runner
+# [FUTURE] Stage 3: Production image
+# FROM registry.access.redhat.com/ubi8/nodejs-18-minimal AS runner
+
+# Stage 3: Production image
+FROM base as runner
+
+# Set working directory
 WORKDIR /app
 
+# Set environment to production
 ENV NODE_ENV production
-# Uncomment the following line in case you want to disable telemetry during runtime.
+
+# Disable Next.js telemetry during runtime
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN addgroup --system --gid 1001 nextjs \
-    && adduser --system --uid 1001 nextjs
+# Copy necessary files from builder stage
+COPY --chown=1001:1001 --from=builder /app/public ./public
+COPY --chown=1001:1001 --from=builder /app/.next/standalone ./
+COPY --chown=1001:1001 --from=builder /app/.next/static ./.next/static
 
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nextjs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nextjs /app/.next/static ./.next/static
+# Set ownership of application files
+RUN chown -R nextjs:nextjs /app
 
-# Set the user for the container
+# Switch to non-root user
 USER nextjs
 
-# Expose the application port
+# Expose application port
 EXPOSE 3000
 ENV PORT 3000
 
-# Run the application
+# Start the application
 CMD ["node", "server.js"]
